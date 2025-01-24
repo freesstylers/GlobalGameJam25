@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv31ttuyw5rnf"]
+[gd_scene load_steps=9 format=3 uid="uid://dv31ttuyw5rnf"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Assets/Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dj0dhf82rc151" path="res://Assets/Sprites/Twitter.png" id="5_60nta"]
 [ext_resource type="Texture2D" uid="uid://drbe1j77opppx" path="res://Assets/Sprites/GGJ_Logo.png" id="6_apn8y"]
 [ext_resource type="FontFile" uid="uid://bnu0s2kb4sfvc" path="res://Assets/Fonts/Larceny.ttf" id="9_spall"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qip73"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -177,6 +179,54 @@ theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
+[node name="PlayerSelection" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177778
+anchor_top = 0.234722
+anchor_right = 0.822222
+anchor_bottom = 0.766667
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="container" type="MarginContainer" parent="PlayerSelection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerSelection/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Label" type="Label" parent="PlayerSelection/container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_spall")
+theme_override_font_sizes/font_size = 32
+text = "CREDITS
+--------
+Gonzalo cidoncha - silly goofy
+DAVID CZEPIEL - el becario
+PABLO GROSSI - el machango
+IGNACIO ORY - superviviente
+JOSE MARTÍN - jose
+JAVIER ARIAS - kumquat konnoisseur"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditsBack" type="Button" parent="PlayerSelection/container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_spall")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
 [node name="tutorial" type="Panel" parent="."]
 visible = false
 layout_mode = 2
@@ -312,14 +362,16 @@ text = "Close"
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_qip73")
 autoplay = true
 
-[connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="_on_free_stylers_button_down"]
-[connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="_on_twitter_button_down"]
-[connection signal="button_down" from="MainButtonContainer/jam" to="." method="_on_gift_jam_button_down"]
+[connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="FreeStylers"]
+[connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="Twitter"]
+[connection signal="button_down" from="MainButtonContainer/jam" to="." method="Jam"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play" to="." method="TogglePlayMenu" binds= [true]]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
+[connection signal="button_down" from="PlayerSelection/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]

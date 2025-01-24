@@ -5,7 +5,6 @@ enum GAME_SCENE {MAIN_MENU, PLAY_SCENE, NULL}
 @onready var loadingScreen : LoadingScreen = $LoadingScreen
 
 var isLoadingScene : bool = false
-
 var currentSceneEnum : GAME_SCENE = GAME_SCENE.NULL
 var currentScene : Node = null
 
