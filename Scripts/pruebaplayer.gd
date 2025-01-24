@@ -12,7 +12,7 @@ func _input(event):
 	var vector = Input.get_vector("down", "up", "right", "left")
 	var vector3 = Vector3(vector.x, 0, -vector.y)
 	
-	if Input.is_action_just_released("throw"):
+	if Input.is_action_just_released("Accelerate"):
 		rigidbody.apply_force(vector3.normalized() * 500)
 		last_vector = vector3.normalized()
 		

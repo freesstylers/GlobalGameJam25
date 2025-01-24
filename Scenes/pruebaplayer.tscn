@@ -20,6 +20,8 @@ script = ExtResource("1_1wal1")
 physics_material_override = SubResource("PhysicsMaterial_5ppcg")
 gravity_scale = 10.0
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_bmnwf")

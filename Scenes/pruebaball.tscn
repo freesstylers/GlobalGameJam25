@@ -20,6 +20,8 @@ script = ExtResource("1_ey0mf")
 physics_material_override = SubResource("PhysicsMaterial_uwmb4")
 gravity_scale = 10.0
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_s8rjv")
