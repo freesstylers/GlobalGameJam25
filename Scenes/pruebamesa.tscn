@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr48j6dww38vt"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1q1x6ov0sumr" path="res://Models/mesa.obj" id="1_ujqa3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84ouw"]
+size = Vector3(10, 0.1, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpixr"]
+size = Vector3(1, 1, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikulw"]
+size = Vector3(10, 1, 1)
+
+[node name="MesaObject" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 1000.0
+gravity_scale = 0.0
+freeze = true
+
+[node name="Mesa" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("1_ujqa3")
+skeleton = NodePath("../..")
+
+[node name="Floor" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48301, 5.04537, 4.51881)
+shape = SubResource("BoxShape3D_84ouw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636362, 5.58594, 4.6602)
+shape = SubResource("BoxShape3D_mpixr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5645, 5.58594, 4.6602)
+shape = SubResource("BoxShape3D_mpixr")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75897, 5.58114, -4.09717)
+shape = SubResource("BoxShape3D_ikulw")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21954, 5.58114, 12.888)
+shape = SubResource("BoxShape3D_ikulw")
