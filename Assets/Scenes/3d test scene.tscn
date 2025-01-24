@@ -1,17 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://v812xw74hhfr"]
+[gd_scene load_steps=5 format=3 uid="uid://v812xw74hhfr"]
 
+[ext_resource type="Script" path="res://Assets/Scripts/Test/progress_barTEST.gd" id="1_16qkb"]
 [ext_resource type="Script" path="res://Assets/Scripts/Test/cameraTest.gd" id="1_qrg6o"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y8nj6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8yjgk"]
+viewport_path = NodePath("MeshInstance3D/Sprite3D/SubViewport")
 
 [node name="3dTestScene" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_y8nj6")
+script = ExtResource("1_qrg6o")
+speed = 0.7
+
+[node name="Sprite3D" type="Sprite3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0479782, 0.998848, 0, -0.998848, 0.0479782, 3.05512, -2.38419e-07, 2.31944)
+texture = SubResource("ViewportTexture_8yjgk")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D/Sprite3D"]
+transparent_bg = true
+gui_disable_input = true
+
+[node name="ProgressBar" type="ProgressBar" parent="MeshInstance3D/Sprite3D/SubViewport"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.246914
+grow_horizontal = 2
+script = ExtResource("1_16qkb")
+metadata/_edit_use_anchors_ = true
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-script = ExtResource("1_qrg6o")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.63937)
