@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://u2amv3j63qg6"]
+
+[ext_resource type="Script" path="res://Scripts/Bubbles/BouncyBubble.gd" id="1_guc2f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_00jjn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpnmf"]
+albedo_color = Color(0, 1, 0.0823529, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kvmuj"]
+material = SubResource("StandardMaterial3D_mpnmf")
+
+[node name="BouncyBubble" type="Node3D"]
+script = ExtResource("1_guc2f")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 10.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_00jjn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_kvmuj")

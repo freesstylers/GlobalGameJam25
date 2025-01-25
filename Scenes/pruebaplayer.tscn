@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_5cn2d")
 [node name="Player" type="Node3D"]
 script = ExtResource("1_1wal1")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_5ppcg")
 gravity_scale = 10.0
 continuous_cd = true

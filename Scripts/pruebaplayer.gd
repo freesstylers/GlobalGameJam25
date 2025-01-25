@@ -22,4 +22,4 @@ func apply_opposite_force():
 
 
 func _on_rigid_body_3d_body_entered(body):
-	print("player collision")
+	pass

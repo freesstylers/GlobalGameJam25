@@ -17,6 +17,7 @@ material = SubResource("StandardMaterial3D_y08aw")
 script = ExtResource("1_ey0mf")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_uwmb4")
 gravity_scale = 10.0
 continuous_cd = true
