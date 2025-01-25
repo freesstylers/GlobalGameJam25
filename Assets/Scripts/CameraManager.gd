@@ -29,7 +29,6 @@ func move_camera(delta):
 		#MATH MAGIC
 		if sign(original_rot.y) != sign(dest_rot.y):
 			if not (abs(original_rot.y) < PI/2 or abs(dest_rot.y) < PI/2):
-				print("ORIGIN: ", original_rot.y, " DESTINY: ", dest_rot.y)
 				if sign(original_rot.y) == 1:
 					var test = PI - original_rot.y
 					original_rot.y = -PI - test

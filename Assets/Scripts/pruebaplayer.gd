@@ -36,7 +36,7 @@ func _input(event):
 	if not is_moving and is_my_turn:
 		#ROTATION
 		var input_vector = Input.get_vector("down", "up", "right", "left")
-		stick.rotate_y(input_vector.x * 0.1)
+		stick.rotate_y(input_vector.x * 0.05)
 		#SHOT
 		if Input.is_action_pressed("Accelerate"):
 			charging = true
@@ -56,6 +56,7 @@ func _input(event):
 				charging = false
 				rigidbody.apply_force(shot_dir * 500 * charge_meter)
 				charge_meter = 0.0
+				stick.visible = false
 				)
 	
 func get_stick():
@@ -79,6 +80,7 @@ func set_player_turn(num):
 	is_my_turn = (num == player_id)
 	
 	if is_my_turn:
+		stick.visible = true
 		forceBar.toggleState(true)
-		stick.global_position = rigidbody.global_position #PENDING TO CHANGE
-		forceBar.bar.value = 0
+		stick.global_position = rigidbody.global_position 
+		forceBar.bar.value = 0	
