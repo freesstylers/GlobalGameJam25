@@ -2,6 +2,7 @@ class_name Player
 extends Node3D
 
 @onready var rigidbody = $RigidBody3D
+@onready var palo_hit_sound = $PaloHit
 
 var last_vector : Vector3
 
@@ -15,6 +16,7 @@ func _input(event):
 	if Input.is_action_just_released("Accelerate"):
 		rigidbody.apply_force(vector3.normalized() * 500)
 		last_vector = vector3.normalized()
+		palo_hit_sound.play()
 		
 func apply_opposite_force():
 	var vector = -last_vector

@@ -1,6 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxs8u8ll3d0u1"]
+[gd_scene load_steps=13 format=3 uid="uid://dxs8u8ll3d0u1"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaball.gd" id="1_7pg8h"]
+[ext_resource type="AudioStream" uid="uid://ca15arcry2vu4" path="res://Assets/Sound/SFX/Bubble/bubble1.ogg" id="2_ea1hh"]
+[ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="3_4usen"]
+[ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="4_r2yv4"]
+[ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="5_d6drm"]
+[ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="6_ne85j"]
+[ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="7_oh3n0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwmb4"]
 bounce = 0.5
@@ -12,6 +18,15 @@ albedo_color = Color(0, 1, 1, 0.337255)
 
 [sub_resource type="SphereMesh" id="SphereMesh_eaurw"]
 material = SubResource("StandardMaterial3D_y08aw")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tj0au"]
+streams_count = 6
+stream_0/stream = ExtResource("2_ea1hh")
+stream_1/stream = ExtResource("3_4usen")
+stream_2/stream = ExtResource("4_r2yv4")
+stream_3/stream = ExtResource("5_d6drm")
+stream_4/stream = ExtResource("6_ne85j")
+stream_5/stream = ExtResource("7_oh3n0")
 
 [node name="Ball" type="Node3D"]
 script = ExtResource("1_7pg8h")
@@ -29,5 +44,8 @@ shape = SubResource("SphereShape3D_s8rjv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_eaurw")
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_tj0au")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

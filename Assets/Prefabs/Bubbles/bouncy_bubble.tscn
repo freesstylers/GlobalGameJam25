@@ -1,6 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://u2amv3j63qg6"]
+[gd_scene load_steps=12 format=3 uid="uid://u2amv3j63qg6"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Bubbles/BouncyBubble.gd" id="1_guc2f"]
+[ext_resource type="AudioStream" uid="uid://ca15arcry2vu4" path="res://Assets/Sound/SFX/Bubble/bubble1.ogg" id="2_mrhf6"]
+[ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="3_6yyuu"]
+[ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="4_61div"]
+[ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="5_6yxkg"]
+[ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="6_lq3y4"]
+[ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="7_iq7tt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_00jjn"]
 
@@ -10,8 +16,19 @@ albedo_color = Color(0, 1, 0.0823529, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_kvmuj"]
 material = SubResource("StandardMaterial3D_mpnmf")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d0703"]
+playback_mode = 1
+streams_count = 6
+stream_0/stream = ExtResource("2_mrhf6")
+stream_1/stream = ExtResource("3_6yyuu")
+stream_2/stream = ExtResource("4_61div")
+stream_3/stream = ExtResource("5_6yxkg")
+stream_4/stream = ExtResource("6_lq3y4")
+stream_5/stream = ExtResource("7_iq7tt")
+
 [node name="BouncyBubble" type="Node3D"]
 script = ExtResource("1_guc2f")
+numhits = 2
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
@@ -24,3 +41,9 @@ shape = SubResource("SphereShape3D_00jjn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_kvmuj")
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_d0703")
+volume_db = -13.117
+
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

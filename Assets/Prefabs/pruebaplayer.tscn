@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://87cygmj10jpd"]
+[gd_scene load_steps=7 format=3 uid="uid://87cygmj10jpd"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaplayer.gd" id="1_1wal1"]
+[ext_resource type="AudioStream" uid="uid://cxc7tt2awutnh" path="res://Assets/Sound/SFX/Pool/palo_hit.ogg" id="2_vs5yh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ppcg"]
 bounce = 0.5
@@ -28,5 +29,8 @@ mesh = SubResource("SphereMesh_bmnwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_mhihy")
+
+[node name="PaloHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vs5yh")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
