@@ -11,6 +11,9 @@ var player_id : int = 0
 
 var charging : bool = false
 var charge_meter : float = 0.0
+const CHARGE_MAX = 3.0 
+
+@export var bar : ProgressBar
 
 func _ready() -> void:
 	GameManager.PoolManager.StopBall.connect(stop_movement)
@@ -21,8 +24,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if charging:
 		charge_meter += delta
-		if charge_meter > 3.0:
-			charge_meter = 3.0
+		bar.value = charge_meter / CHARGE_MAX
+		if charge_meter > CHARGE_MAX:
+			charge_meter = CHARGE_MAX
+			pass
+		pass
 	
 func _input(event):
 	if not is_moving and is_my_turn:
