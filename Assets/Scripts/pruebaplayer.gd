@@ -13,7 +13,7 @@ var charging : bool = false
 var charge_meter : float = 0.0
 const CHARGE_MAX = 3.0 
 
-@export var bar : ProgressBar
+@export var forceBar : ForceBarController
 
 func _ready() -> void:
 	GameManager.PoolManager.StopBall.connect(stop_movement)
@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if charging:
 		charge_meter += delta
-		bar.value = charge_meter / CHARGE_MAX
+		forceBar.bar.value = charge_meter / CHARGE_MAX
 		if charge_meter > CHARGE_MAX:
 			charge_meter = CHARGE_MAX
 			pass
@@ -54,3 +54,5 @@ func stop_movement():
 	
 func set_player_turn(num):
 	is_my_turn = (num == player_id)
+	
+	forceBar.toggleState(is_my_turn)
