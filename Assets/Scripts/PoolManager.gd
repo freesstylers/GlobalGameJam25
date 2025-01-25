@@ -1,7 +1,7 @@
 class_name PoolManagement
 extends Node
 
-signal HitBall
+signal HitBall(charge)
 signal StopBall
 signal NewBubble
 signal HitBubble
@@ -44,7 +44,8 @@ func _ready() -> void:
 	max_bubbles = alive_bubbles
 	print("Max bubbles = ", max_bubbles)
 	
-func start_play():
+func start_play(charge):
+	play_timer.wait_time = 4 * charge
 	play_timer.start()
 	if is_single_player:
 		num_shots += 1
@@ -65,6 +66,9 @@ func hit_bubble_1player():
 	
 func hit_bubble_multiplayer():
 	alive_bubbles -= 1
+	if alive_bubbles <= 0:
+		print("end")
+		pass
 	if alive_bubbles < max_bubbles * 0.5:
 		mesa_manager.spawn_num_bubbles(alive_bubbles)
 		max_bubbles = alive_bubbles
