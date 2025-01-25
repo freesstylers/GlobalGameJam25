@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdh6n08ne5u0e"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="3_8dtv5"]
+
+[node name="CameraManager" type="Node3D" node_paths=PackedStringArray("camera", "look_target", "path_follow", "default_pos")]
+script = ExtResource("3_8dtv5")
+camera = NodePath("")
+look_target = NodePath("")
+path_follow = NodePath("")
+default_pos = NodePath("")
