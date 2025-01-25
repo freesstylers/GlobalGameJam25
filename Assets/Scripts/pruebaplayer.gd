@@ -64,10 +64,11 @@ func stop_movement():
 	is_moving = false
 	
 func apply_opposite_force():
-	rigidbody.linear_velocity = -rigidbody.linear_velocity * 50
+	var newvector : Vector3 = Vector3(-rigidbody.linear_velocity.x, 0.0, -rigidbody.linear_velocity.z)
+	rigidbody.linear_velocity = newvector * 50
 	
 func apply_gravity_force(dir : Vector3):
-	rigidbody.apply_force(dir * 10000)
+	rigidbody.apply_force(-dir * 10)
 	
 func set_player_turn(num):
 	is_my_turn = (num == player_id)
