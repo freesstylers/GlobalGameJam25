@@ -13,7 +13,7 @@ signal PlayerStartTurn(num)
 
 var ball_moving : bool = false
 
-var is_single_player : bool = true
+var is_single_player : bool = false
 
 var player_turn : int = 0
 var max_players : int = 2
@@ -21,9 +21,12 @@ var num_players : int = 1
 var current_players : int = 0
 
 var alive_bubbles : int = 0
+var max_bubbles : int  = 0
 var num_shots : int = 0
 
 var player_bubble_count : Array[int]
+
+var mesa_manager : MesaManager = null
 
 func _init() -> void:
 	GameManager.PoolManager = self
@@ -38,6 +41,8 @@ func _ready() -> void:
 	for i in num_players:
 		player_bubble_count.append(0)
 	PlayerStartTurn.emit(player_turn)
+	max_bubbles = alive_bubbles
+	print("Max bubbles = ", max_bubbles)
 	
 func start_play():
 	play_timer.start()
@@ -59,7 +64,10 @@ func hit_bubble_1player():
 		print("Tiros realizados: ", num_shots)
 	
 func hit_bubble_multiplayer():
-	pass
+	alive_bubbles -= 1
+	if alive_bubbles < max_bubbles * 0.5:
+		mesa_manager.spawn_num_bubbles(alive_bubbles)
+		max_bubbles = alive_bubbles
 
 func _on_play_timer_timeout() -> void:
 	StopBall.emit()
