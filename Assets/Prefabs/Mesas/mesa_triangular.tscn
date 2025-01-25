@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://csd230kuta24i"]
+[gd_scene load_steps=10 format=3 uid="uid://csd230kuta24i"]
 
 [ext_resource type="PackedScene" uid="uid://gtcbarcuu30n" path="res://Assets/Models/MesaTriangular.glb" id="1_sqko4"]
 [ext_resource type="Script" path="res://Assets/Scripts/MesaManager.gd" id="1_tyiih"]
 [ext_resource type="Texture2D" uid="uid://d1476h2y35as0" path="res://Assets/Sprites/LogoFreestylers.png" id="3_1ldln"]
+[ext_resource type="Script" path="res://Assets/Scripts/spawner.gd" id="3_xsl7w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkft8"]
 size = Vector3(20, 0.1, 15)
@@ -15,6 +16,9 @@ size = Vector3(1, 1, 19)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jdwrl"]
 size = Vector3(19, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4fsfq"]
+radius = 0.75
 
 [node name="MesaTriangular" type="Node3D" node_paths=PackedStringArray("spawners")]
 script = ExtResource("1_tyiih")
@@ -46,21 +50,57 @@ shape = SubResource("BoxShape3D_jdwrl")
 
 [node name="Spawner6" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+script = ExtResource("3_xsl7w")
+
+[node name="Area3D" type="Area3D" parent="Spawner6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner6/Area3D"]
+shape = SubResource("SphereShape3D_4fsfq")
 
 [node name="Spawner5" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.6, 0)
+script = ExtResource("3_xsl7w")
+
+[node name="Area3D" type="Area3D" parent="Spawner5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner5/Area3D"]
+shape = SubResource("SphereShape3D_4fsfq")
 
 [node name="Spawner4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, 0)
+script = ExtResource("3_xsl7w")
+
+[node name="Area3D" type="Area3D" parent="Spawner4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner4/Area3D"]
+shape = SubResource("SphereShape3D_4fsfq")
 
 [node name="Spawner3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01597, 0.6, 4.01503)
+script = ExtResource("3_xsl7w")
+
+[node name="Area3D" type="Area3D" parent="Spawner3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner3/Area3D"]
+shape = SubResource("SphereShape3D_4fsfq")
 
 [node name="Spawner2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72416, 0.6, 4.20125)
+script = ExtResource("3_xsl7w")
+
+[node name="Area3D" type="Area3D" parent="Spawner2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner2/Area3D"]
+shape = SubResource("SphereShape3D_4fsfq")
 
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -7.37455)
+script = ExtResource("3_xsl7w")
+
+[node name="Area3D" type="Area3D" parent="Spawner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner/Area3D"]
+shape = SubResource("SphereShape3D_4fsfq")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.364614, 0)

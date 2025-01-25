@@ -46,7 +46,7 @@ stream_3/stream = ExtResource("5_d6drm")
 stream_4/stream = ExtResource("6_ne85j")
 stream_5/stream = ExtResource("7_oh3n0")
 
-[node name="Ball" type="Node3D"]
+[node name="Ball" type="Node3D" groups=["Bubbles"]]
 script = ExtResource("1_gac6o")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]

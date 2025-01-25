@@ -13,8 +13,8 @@ func _ready() -> void:
 
 func on_hit(body):
 	numhits -= 1
-	set_shader_color(hitColors[numhits])
-	if numhits == 0:
+	#set_shader_color(hitColors[numhits])
+	if numhits <= 0:
 		GameManager.PoolManager.HitBubble.emit()
 		queue_free()
 

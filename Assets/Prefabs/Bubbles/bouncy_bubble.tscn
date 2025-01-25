@@ -44,7 +44,7 @@ stream_3/stream = ExtResource("5_6yxkg")
 stream_4/stream = ExtResource("6_lq3y4")
 stream_5/stream = ExtResource("7_iq7tt")
 
-[node name="BouncyBubble" type="Node3D"]
+[node name="BouncyBubble" type="Node3D" groups=["Bubbles"]]
 script = ExtResource("1_guc2f")
 numhits = 2
 hitColors = Array[Color]([Color(0.768627, 0.0117647, 0.666667, 1), Color(0.133333, 0.435294, 0.0862745, 1), Color(0.847059, 0.156863, 0.152941, 1)])

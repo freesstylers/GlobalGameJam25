@@ -41,7 +41,7 @@ func _input(event):
 		if Input.is_action_just_released("Accelerate"):
 			rigidbody.apply_force(vector3.normalized() * 500 * charge_meter)
 			palo_hit_sound.play()
-			GameManager.PoolManager.HitBall.emit()
+			GameManager.PoolManager.HitBall.emit(charge_meter)
 			is_moving = true
 			charging = false
 			charge_meter = 0.0
