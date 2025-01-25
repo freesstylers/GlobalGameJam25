@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxs8u8ll3d0u1"]
+[gd_scene load_steps=15 format=3 uid="uid://dxs8u8ll3d0u1"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaball.gd" id="1_7pg8h"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="2_50ydn"]
 [ext_resource type="AudioStream" uid="uid://ca15arcry2vu4" path="res://Assets/Sound/SFX/Bubble/bubble1.ogg" id="2_ea1hh"]
 [ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="3_4usen"]
+[ext_resource type="Texture2D" uid="uid://6t6jl2iuyjwh" path="res://Assets/Shaders/Noise/noise.tres" id="3_fetgg"]
 [ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="4_r2yv4"]
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="5_d6drm"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="6_ne85j"]
@@ -13,11 +15,18 @@ bounce = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8rjv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y08aw"]
-albedo_color = Color(0, 1, 1, 0.337255)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d10nv"]
+render_priority = 0
+shader = ExtResource("2_50ydn")
+shader_parameter/bubble_color = Color(0.33244, 0.495902, 0.746645, 1)
+shader_parameter/alpha_bubble = 0.7
+shader_parameter/height_multiplier = 0.5
+shader_parameter/noise_sample_size = 0.02
+shader_parameter/animation_speed = 0.015
+shader_parameter/noise = ExtResource("3_fetgg")
 
-[sub_resource type="SphereMesh" id="SphereMesh_eaurw"]
-material = SubResource("StandardMaterial3D_y08aw")
+[sub_resource type="SphereMesh" id="SphereMesh_oclog"]
+material = SubResource("ShaderMaterial_d10nv")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tj0au"]
 streams_count = 6
@@ -43,7 +52,8 @@ max_contacts_reported = 5
 shape = SubResource("SphereShape3D_s8rjv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("SphereMesh_eaurw")
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("SphereMesh_oclog")
 
 [node name="BubblePop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_tj0au")

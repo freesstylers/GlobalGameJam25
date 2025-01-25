@@ -1,23 +1,7 @@
-[gd_resource type="SphereMesh" load_steps=5 format=3 uid="uid://che5aggqytks"]
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://che5aggqytks"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="1_j36va"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ptjky"]
-noise_type = 2
-frequency = 0.017
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ddqt"]
-noise = SubResource("FastNoiseLite_ptjky")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8v8gt"]
-render_priority = 0
-shader = ExtResource("1_j36va")
-shader_parameter/bubble_color = Color(0.927392, 0.373252, 0.495711, 1)
-shader_parameter/alpha_bubble = 0.7
-shader_parameter/height_multiplier = 0.12
-shader_parameter/noise_sample_size = 0.055
-shader_parameter/animation_speed = 0.07
-shader_parameter/noise = SubResource("NoiseTexture2D_8ddqt")
+[ext_resource type="Material" uid="uid://5nup7qfccaeb" path="res://Assets/Resources/Materials/bubble_material.tres" id="1_c3e7r"]
 
 [resource]
-material = SubResource("ShaderMaterial_8v8gt")
+resource_local_to_scene = true
+material = ExtResource("1_c3e7r")

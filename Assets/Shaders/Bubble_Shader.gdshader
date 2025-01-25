@@ -6,8 +6,8 @@ uniform sampler2D noise; //Ruido para la burbuja
 uniform vec4 bubble_color : source_color;
 uniform float alpha_bubble = 0.7;
 uniform float height_multiplier = 0.5;
-uniform float noise_sample_size = 0.1;
-uniform float animation_speed = 0.01;
+uniform float noise_sample_size = 0.02;
+uniform float animation_speed = 0.015;
 
 float fresnel(vec3 normal, mat4 camera_matrix){
 	vec3 view_direction_world = (camera_matrix * vec4(0.0,0.0,1.0 - alpha_bubble,0.0)).xyz;
@@ -21,7 +21,7 @@ float fresnel(vec3 normal, mat4 camera_matrix){
 }
 
 void vertex() {
-	float height = texture(noise, VERTEX.xz * noise_sample_size + TIME * animation_speed).r;
+	float height = texture(noise, VERTEX.xz * noise_sample_size + TIME * animation_speed).r/3.0 + 0.2;
 	VERTEX += NORMAL * height * height_multiplier;
 }
 
