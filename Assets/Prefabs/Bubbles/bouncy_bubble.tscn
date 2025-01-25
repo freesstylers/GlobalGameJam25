@@ -18,9 +18,10 @@ seed = 4
 noise = SubResource("FastNoiseLite_mj1u8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y62dy"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_jpi3b")
-shader_parameter/bubble_color = Color(0.847059, 0.32549, 0.27451, 0.784314)
+shader_parameter/bubble_color = Color(0.792157, 0.137255, 0.117647, 0.980392)
 shader_parameter/alpha_bubble = -0.55
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 0.04
@@ -47,7 +48,7 @@ stream_5/stream = ExtResource("7_iq7tt")
 [node name="BouncyBubble" type="Node3D" groups=["Bubbles"]]
 script = ExtResource("1_guc2f")
 numhits = 2
-hitColors = Array[Color]([Color(0.768627, 0.0117647, 0.666667, 1), Color(0.133333, 0.435294, 0.0862745, 1), Color(0.847059, 0.156863, 0.152941, 1)])
+hitColors = Array[Color]([Color(0.913725, 0.12549, 0.113725, 1), Color(0.613972, 0.0566443, 0.0532187, 0.690196)])
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
