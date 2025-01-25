@@ -45,7 +45,7 @@ func _ready() -> void:
 	print("Max bubbles = ", max_bubbles)
 	
 func start_play(charge):
-	play_timer.wait_time = 4 * charge
+	play_timer.wait_time = 10
 	play_timer.start()
 	if is_single_player:
 		num_shots += 1

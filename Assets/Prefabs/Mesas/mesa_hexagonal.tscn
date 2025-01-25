@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://d1wy1wylvjff6" path="res://Assets/Models/MesaHexadecimal.glb" id="1_052iu"]
 [ext_resource type="Script" path="res://Assets/Scripts/MesaManager.gd" id="1_pav57"]
 [ext_resource type="Script" path="res://Assets/Scripts/spawner.gd" id="3_7ulor"]
-[ext_resource type="Texture2D" uid="uid://d1476h2y35as0" path="res://Assets/Sprites/LogoFreestylers.png" id="3_wqilb"]
+[ext_resource type="Texture2D" uid="uid://c0vjr1o8m12j" path="res://FreeStylers_Logo.png" id="4_01hen"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pxiex"]
 size = Vector3(15, 0.1, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dm5ri"]
-size = Vector3(1, 1, 8)
+size = Vector3(1, 5, 8)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_djt4i"]
 radius = 0.75
@@ -25,6 +25,10 @@ freeze = true
 
 [node name="MesaHexadecimal" parent="RigidBody3D" instance=ExtResource("1_052iu")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="Floor2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07234, 0)
+shape = SubResource("BoxShape3D_pxiex")
 
 [node name="Floor" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.330955, 0)
@@ -128,4 +132,4 @@ shape = SubResource("SphereShape3D_djt4i")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-8.74228e-08, -2, -8.74228e-08, 0, -8.74228e-08, 2, -2, 8.74228e-08, 3.82137e-15, 0, 0.382493, 5.17332e-08)
-texture = ExtResource("3_wqilb")
+texture = ExtResource("4_01hen")
