@@ -4,7 +4,7 @@ extends BaseBall
 var bubbleShader : ShaderMaterial #seteamos los parametros con seet_shader_material
 
 func _ready() -> void:
-	
+	super._ready()
 	#Buscamos el shader y lo metemos en la variable
 	var count = $RigidBody3D/BubbleMesh.get_surface_override_material_count()
 	bubbleShader = $RigidBody3D/BubbleMesh.get_active_material(0) as ShaderMaterial
