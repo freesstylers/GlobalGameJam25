@@ -1,6 +1,6 @@
 [gd_resource type="SphereMesh" load_steps=5 format=3 uid="uid://che5aggqytks"]
 
-[ext_resource type="Shader" path="res://Shaders/Bubble_Shader.gdshader" id="1_j36va"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="1_j36va"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ptjky"]
 noise_type = 2

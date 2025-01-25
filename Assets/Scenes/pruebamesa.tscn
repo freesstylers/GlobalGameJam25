@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dr48j6dww38vt"]
 
-[ext_resource type="ArrayMesh" uid="uid://c1q1x6ov0sumr" path="res://Models/mesa.obj" id="1_ujqa3"]
+[ext_resource type="ArrayMesh" uid="uid://c1q1x6ov0sumr" path="res://Assets/Models/mesa.obj" id="1_ujqa3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84ouw"]
 size = Vector3(10, 0.1, 17)
