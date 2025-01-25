@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://drfqwlguujga"]
 
 [ext_resource type="PackedScene" uid="uid://87cygmj10jpd" path="res://Assets/Prefabs/pruebaplayer.tscn" id="1_ivced"]
-[ext_resource type="PackedScene" uid="uid://csd230kuta24i" path="res://Assets/Prefabs/Mesas/mesa_triangular.tscn" id="1_ojh30"]
+[ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_uj53o"]
 [ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MesaTriangular" parent="." instance=ExtResource("1_ojh30")]
+[node name="MesaHexagonal" parent="." instance=ExtResource("1_uj53o")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_ivced")]
