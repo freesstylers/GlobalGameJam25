@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://u2amv3j63qg6"]
+[gd_scene load_steps=15 format=3 uid="uid://u2amv3j63qg6"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Bubbles/BouncyBubble.gd" id="1_guc2f"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="2_jpi3b"]
 [ext_resource type="AudioStream" uid="uid://ca15arcry2vu4" path="res://Assets/Sound/SFX/Bubble/bubble1.ogg" id="2_mrhf6"]
 [ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="3_6yyuu"]
-[ext_resource type="Texture2D" uid="uid://6t6jl2iuyjwh" path="res://Assets/Shaders/Noise/noise.tres" id="3_60mns"]
 [ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="4_61div"]
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="5_6yxkg"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="6_lq3y4"]
@@ -12,15 +11,21 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_00jjn"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mj1u8"]
+seed = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4u1r3"]
+noise = SubResource("FastNoiseLite_mj1u8")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y62dy"]
 render_priority = 0
 shader = ExtResource("2_jpi3b")
-shader_parameter/bubble_color = Color(0.155877, 0.617215, 0.330781, 1)
-shader_parameter/alpha_bubble = 0.7
+shader_parameter/bubble_color = Color(0.847059, 0.32549, 0.27451, 0.729412)
+shader_parameter/alpha_bubble = -0.7
 shader_parameter/height_multiplier = 0.5
-shader_parameter/noise_sample_size = 0.02
-shader_parameter/animation_speed = 0.015
-shader_parameter/noise = ExtResource("3_60mns")
+shader_parameter/noise_sample_size = 0.2
+shader_parameter/animation_speed = 0.03
+shader_parameter/noise = SubResource("NoiseTexture2D_4u1r3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_1ymkk"]
 material = SubResource("ShaderMaterial_y62dy")
@@ -38,7 +43,7 @@ stream_5/stream = ExtResource("7_iq7tt")
 [node name="BouncyBubble" type="Node3D"]
 script = ExtResource("1_guc2f")
 numhits = 2
-hitColors = Array[Color]([Color(0, 0, 0, 1), Color(0.909968, 0.854121, 0.115571, 1)])
+hitColors = Array[Color]([Color(0.898039, 0.890196, 0.101961, 0.662745), Color(0.913725, 0.435294, 0.0862745, 0.662745), Color(0.847059, 0.156863, 0.152941, 0.733333)])
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
