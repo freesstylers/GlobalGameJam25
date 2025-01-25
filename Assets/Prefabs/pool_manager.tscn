@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc8eguu0xw0fb"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/PoolManager.gd" id="1_dous0"]
+
+[node name="PoolManager" type="Node"]
+script = ExtResource("1_dous0")
+
+[node name="PlayTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]

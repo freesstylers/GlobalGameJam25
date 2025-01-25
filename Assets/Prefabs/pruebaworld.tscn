@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://drfqwlguujga"]
+[gd_scene load_steps=6 format=3 uid="uid://drfqwlguujga"]
 
 [ext_resource type="PackedScene" uid="uid://87cygmj10jpd" path="res://Assets/Prefabs/pruebaplayer.tscn" id="1_ivced"]
 [ext_resource type="PackedScene" uid="uid://dxs8u8ll3d0u1" path="res://Assets/Prefabs/Bubbles/pruebaball.tscn" id="2_8c2pr"]
 [ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="3_rs5y8"]
 [ext_resource type="PackedScene" uid="uid://u2amv3j63qg6" path="res://Assets/Prefabs/Bubbles/bouncy_bubble.tscn" id="4_c585g"]
+[ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -30,3 +31,5 @@ light_energy = 0.677
 
 [node name="BouncyBubble" parent="." instance=ExtResource("4_c585g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54342, 5.55324, 4.0825)
+
+[node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]

@@ -10,4 +10,5 @@ var last_input_used : INPUT_TYPE = INPUT_TYPE.KEYBOARD
 var players : Array = []
 var current_player = null
 var SceneManager : SceneManagement = null
+var PoolManager : PoolManager = null
 ###########END_VARIABLES
