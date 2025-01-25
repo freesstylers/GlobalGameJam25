@@ -63,6 +63,12 @@ func stop_movement():
 	rigidbody.angular_velocity = Vector3.ZERO
 	is_moving = false
 	
+func apply_opposite_force():
+	rigidbody.linear_velocity = -rigidbody.linear_velocity * 50
+	
+func apply_gravity_force(dir : Vector3):
+	rigidbody.apply_force(dir * 10000)
+	
 func set_player_turn(num):
 	is_my_turn = (num == player_id)
 	forceBar.toggleState(is_my_turn)

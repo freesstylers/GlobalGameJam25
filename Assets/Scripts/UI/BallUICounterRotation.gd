@@ -12,7 +12,6 @@ var rot
 
 
 func _process(delta: float) -> void:
-	print(global_rotation)
 	pass
 	#global_rotation = rot
 

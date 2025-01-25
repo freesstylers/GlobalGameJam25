@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://87cygmj10jpd" path="res://Assets/Prefabs/pruebaplayer.tscn" id="1_ivced"]
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_uj53o"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="4_kngja"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
+[ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
 
 [node name="HEXPOOL" type="Node3D"]
 

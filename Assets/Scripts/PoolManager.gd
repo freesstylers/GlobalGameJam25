@@ -80,6 +80,7 @@ func _on_play_timer_timeout() -> void:
 		player_turn = 0
 	PlayerStartTurn.emit(player_turn)
 	print("Next turn")
+	play_timer.stop()
 	
 func reset_game():
 	player_turn = 0

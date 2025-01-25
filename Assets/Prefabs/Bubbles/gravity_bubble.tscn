@@ -1,0 +1,70 @@
+[gd_scene load_steps=16 format=3 uid="uid://d1jhrnriropbf"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Bubbles/GravityBubble.gd" id="1_8fnui"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="1_31ofv"]
+[ext_resource type="AudioStream" uid="uid://ca15arcry2vu4" path="res://Assets/Sound/SFX/Bubble/bubble1.ogg" id="3_xvn82"]
+[ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="4_5cyqy"]
+[ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="5_b0wdk"]
+[ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="6_nqv6t"]
+[ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="7_p50fx"]
+[ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="8_abge7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a6xk7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_anf8u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8f0fp"]
+noise = SubResource("FastNoiseLite_anf8u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qer5"]
+render_priority = 0
+shader = ExtResource("1_31ofv")
+shader_parameter/bubble_color = Color(1, 1, 1, 0.682353)
+shader_parameter/alpha_bubble = 0.255
+shader_parameter/height_multiplier = 0.2
+shader_parameter/noise_sample_size = 0.04
+shader_parameter/animation_speed = 0.03
+shader_parameter/radio = 1.5
+shader_parameter/metallic = 0.5
+shader_parameter/roughness = 0.2
+shader_parameter/noise = SubResource("NoiseTexture2D_8f0fp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_eg0p0"]
+material = SubResource("ShaderMaterial_1qer5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8nun"]
+radius = 2.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q5rg1"]
+playback_mode = 1
+streams_count = 6
+stream_0/stream = ExtResource("3_xvn82")
+stream_1/stream = ExtResource("4_5cyqy")
+stream_2/stream = ExtResource("5_b0wdk")
+stream_3/stream = ExtResource("6_nqv6t")
+stream_4/stream = ExtResource("7_p50fx")
+stream_5/stream = ExtResource("8_abge7")
+
+[node name="GravityBubble" type="Node3D"]
+script = ExtResource("1_8fnui")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_a6xk7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_eg0p0")
+
+[node name="GravityZone" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityZone"]
+shape = SubResource("SphereShape3D_c8nun")
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_q5rg1")
+volume_db = -13.117
+
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
+[connection signal="body_entered" from="GravityZone" to="." method="_on_gravity_zone_body_entered"]
+[connection signal="body_exited" from="GravityZone" to="." method="_on_gravity_zone_body_exited"]
