@@ -1,13 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c23s8kvrsh8w7"]
+[gd_scene load_steps=8 format=3 uid="uid://c23s8kvrsh8w7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Bubbles/ExplodeBubble.gd" id="1_2v8dh"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="2_mug03"]
-[ext_resource type="AudioStream" uid="uid://ca15arcry2vu4" path="res://Assets/Sound/SFX/Bubble/bubble1.ogg" id="3_v7lra"]
-[ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="4_he1jg"]
-[ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="5_mbt75"]
-[ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="6_mx2ip"]
-[ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="7_xl30c"]
-[ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="8_2tcmh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dpc3"]
 
@@ -32,16 +26,6 @@ shader_parameter/noise = SubResource("NoiseTexture2D_i24ea")
 [sub_resource type="SphereMesh" id="SphereMesh_4xhsn"]
 material = SubResource("ShaderMaterial_0y61a")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rxct4"]
-playback_mode = 1
-streams_count = 6
-stream_0/stream = ExtResource("3_v7lra")
-stream_1/stream = ExtResource("4_he1jg")
-stream_2/stream = ExtResource("5_mbt75")
-stream_3/stream = ExtResource("6_mx2ip")
-stream_4/stream = ExtResource("7_xl30c")
-stream_5/stream = ExtResource("8_2tcmh")
-
 [node name="ExplodeBubble" type="Node3D"]
 script = ExtResource("1_2v8dh")
 
@@ -56,9 +40,5 @@ shape = SubResource("SphereShape3D_7dpc3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_4xhsn")
-
-[node name="BubblePop" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_rxct4")
-volume_db = -13.117
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://drfqwlguujga"]
+[gd_scene load_steps=6 format=3 uid="uid://drfqwlguujga"]
 
 [ext_resource type="PackedScene" uid="uid://87cygmj10jpd" path="res://Assets/Prefabs/pruebaplayer.tscn" id="1_ivced"]
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_uj53o"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="4_kngja"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
+[ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
+[ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="5_x35km"]
 
 [node name="HEXPOOL" type="Node3D"]
 
@@ -35,3 +36,8 @@ spot_angle = 61.875
 
 [node name="TOP" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 17, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x35km")
+volume_db = -10.306
+autoplay = true

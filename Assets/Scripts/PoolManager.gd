@@ -58,6 +58,7 @@ func hit_bubble():
 		hit_bubble_1player()
 	else:
 		hit_bubble_multiplayer()
+	$AudioStreamPlayer.play()
 	
 func hit_bubble_1player():
 	alive_bubbles -= 1
