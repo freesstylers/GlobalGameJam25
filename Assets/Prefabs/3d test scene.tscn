@@ -5,8 +5,8 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y8nj6"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8yjgk"]
-viewport_path = NodePath("MeshInstance3D/Sprite3D/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_fbiqa"]
+viewport_path = NodePath("MeshInstance3D/BarraFuerza/SubViewport")
 
 [node name="3dTestScene" type="Node3D"]
 
@@ -15,15 +15,15 @@ mesh = SubResource("CylinderMesh_y8nj6")
 script = ExtResource("1_shc7p")
 speed = 0.7
 
-[node name="Sprite3D" type="Sprite3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0479782, 0.998848, 0, -0.998848, 0.0479782, 3.05512, -2.38419e-07, 2.31944)
-texture = SubResource("ViewportTexture_8yjgk")
+[node name="BarraFuerza" type="Sprite3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18868, 0, 0)
+texture = SubResource("ViewportTexture_fbiqa")
 
-[node name="SubViewport" type="SubViewport" parent="MeshInstance3D/Sprite3D"]
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D/BarraFuerza"]
 transparent_bg = true
 gui_disable_input = true
 
-[node name="ProgressBar" type="ProgressBar" parent="MeshInstance3D/Sprite3D/SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="MeshInstance3D/BarraFuerza/SubViewport"]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.246914

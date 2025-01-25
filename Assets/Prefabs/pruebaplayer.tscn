@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://87cygmj10jpd"]
+[gd_scene load_steps=9 format=3 uid="uid://87cygmj10jpd"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaplayer.gd" id="1_1wal1"]
+[ext_resource type="Script" path="res://Assets/Scripts/Test/progress_barTEST.gd" id="2_b0jbi"]
 [ext_resource type="AudioStream" uid="uid://cxc7tt2awutnh" path="res://Assets/Sound/SFX/Pool/palo_hit.ogg" id="2_vs5yh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ppcg"]
@@ -13,6 +14,9 @@ albedo_color = Color(0, 0, 1, 1)
 material = SubResource("StandardMaterial3D_5cn2d")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhihy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_blna6"]
+viewport_path = NodePath("RigidBody3D/BarraPivot/BarraFuerza/SubViewport")
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_1wal1")
@@ -29,6 +33,26 @@ mesh = SubResource("SphereMesh_bmnwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_mhihy")
+
+[node name="BarraPivot" type="Node3D" parent="RigidBody3D"]
+
+[node name="BarraFuerza" type="Sprite3D" parent="RigidBody3D/BarraPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.56915, 0, 0)
+texture = SubResource("ViewportTexture_blna6")
+
+[node name="SubViewport" type="SubViewport" parent="RigidBody3D/BarraPivot/BarraFuerza"]
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(400, 50)
+
+[node name="ProgressBar" type="ProgressBar" parent="RigidBody3D/BarraPivot/BarraFuerza/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+script = ExtResource("2_b0jbi")
 
 [node name="PaloHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vs5yh")
