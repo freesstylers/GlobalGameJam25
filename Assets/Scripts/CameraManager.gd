@@ -18,6 +18,7 @@ func _process(delta):
 	
 func move_camera(delta):
 	var target_to_move_towards : Node3D = null
+	#PLAYER CONTROL
 	if following_player:
 		target_to_move_towards = player_node
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)
@@ -25,10 +26,18 @@ func move_camera(delta):
 		var original_rot = camera.global_rotation
 		camera.look_at(look_target.global_position, Vector3.UP)	
 		var dest_rot = camera.global_rotation 
-		if original_rot.y < dest_rot.y:
-			var aux : float = abs(abs(original_rot.y) - PI)
-			original_rot.y = PI + aux
+		#MATH MAGIC
+		if sign(original_rot.y) != sign(dest_rot.y):
+			if not (abs(original_rot.y) < PI/2 or abs(dest_rot.y) < PI/2):
+				print("ORIGIN: ", original_rot.y, " DESTINY: ", dest_rot.y)
+				if sign(original_rot.y) == 1:
+					var test = PI - original_rot.y
+					original_rot.y = -PI - test
+				else:
+					var test = -PI - original_rot.y
+					original_rot.y = PI - test
 		camera.global_rotation = original_rot.lerp(dest_rot, lerp_factor * delta)
+	#TOP VISION
 	else:
 		target_to_move_towards = default_pos
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)

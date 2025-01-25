@@ -50,7 +50,6 @@ func _input(event):
 			charging = false
 			charge_meter = 0.0
 	
-	
 func get_stick():
 	return $BarraPivot/CameraPoint
 	
