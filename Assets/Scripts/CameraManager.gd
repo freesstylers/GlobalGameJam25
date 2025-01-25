@@ -10,7 +10,7 @@ var following_player : bool = false
 var player_node : Node3D = null
 
 func _init():
-	GameManager.PoolManager.HitBall.connect(on_player_ball_hit)
+	GameManager.PoolManager.PlayerWillShoot.connect(show_table_from_the_top)
 	GameManager.PoolManager.PlayerStartTurn.connect(on_player_start_turn)
 
 func _process(delta):
@@ -43,7 +43,7 @@ func move_camera(delta):
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)
 		camera.global_rotation = camera.global_rotation.lerp(target_to_move_towards.global_rotation, lerp_factor * delta)
 	
-func on_player_ball_hit(aux):
+func show_table_from_the_top():
 	following_player = false
 
 func on_player_start_turn(player_id):

@@ -1,11 +1,12 @@
 class_name Player
 extends Node3D
 
+@export var forceBar : ForceBarController
 @onready var rigidbody = $RigidBody3D
 @onready var palo_hit_sound = $PaloHit
-
-@export var forceBar : ForceBarController
 @onready var stick : Node3D = $BarraPivot
+@onready var stick_model : Node3D = $BarraPivot/Taco
+
 var rotation_speed : float = 0.5
 
 var is_moving : bool = false
@@ -17,7 +18,6 @@ var charging : bool = false
 var charge_meter : float = 0.0
 const CHARGE_MAX = 3.0 
 
-
 func _ready() -> void:
 	GameManager.PoolManager.StopBall.connect(stop_movement)
 	GameManager.PoolManager.PlayerStartTurn.connect(set_player_turn)
@@ -26,7 +26,6 @@ func _ready() -> void:
 	GameManager.PoolManager.current_players += 1
 	
 func _process(delta: float) -> void:
-	#stick.global_position = rigidbody.global_position
 	if charging:
 		charge_meter += delta
 		forceBar.bar.value = charge_meter / CHARGE_MAX
@@ -42,21 +41,28 @@ func _input(event):
 		if Input.is_action_pressed("Accelerate"):
 			charging = true
 		if Input.is_action_just_released("Accelerate"):
-			var shot_dir = -stick.global_transform.basis.x
-			rigidbody.apply_force(shot_dir * 500 * charge_meter)
-			palo_hit_sound.play()
-			GameManager.PoolManager.HitBall.emit(charge_meter)
 			is_moving = true
-			charging = false
-			charge_meter = 0.0
+			GameManager.PoolManager.PlayerWillShoot.emit()
 			forceBar.toggleState(false)
+			var shot_dir = -stick.global_transform.basis.x
+			var displacement : int = 3
+			var original_pos = stick_model.position
+			var local_tween = create_tween()
+			local_tween.tween_property(stick_model, "position:x", original_pos.x + displacement, 1.5).set_delay(0.5)
+			local_tween.tween_property(stick_model, "position:x", original_pos.x, 0.3)
+			local_tween.tween_callback(func():
+				GameManager.PoolManager.HitBall.emit(charge_meter)
+				palo_hit_sound.play()
+				charging = false
+				rigidbody.apply_force(shot_dir * 500 * charge_meter)
+				charge_meter = 0.0
+				)
 	
 func get_stick():
 	return $BarraPivot/CameraPoint
-	
 func get_ball():
 	return rigidbody
-	
+
 func stop_movement():
 	rigidbody.inertia = Vector3.ZERO
 	rigidbody.linear_velocity = Vector3.ZERO

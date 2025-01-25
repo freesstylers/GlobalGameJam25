@@ -2,6 +2,7 @@ class_name PoolManagement
 extends Node
 
 signal HitBall(charge)
+signal PlayerWillShoot()
 signal StopBall
 signal NewBubble
 signal HitBubble
