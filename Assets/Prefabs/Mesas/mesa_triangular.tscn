@@ -63,5 +63,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72416, 0.6, 4.20125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -7.37455)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.364614, 0)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.364614, 0)
 texture = ExtResource("3_1ldln")

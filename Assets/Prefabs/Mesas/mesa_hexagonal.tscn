@@ -75,5 +75,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.87267, 0.6, 2.65866)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37458, 0.6, -3.37134)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.382493, 5.17332e-08)
+transform = Transform3D(-8.74228e-08, -2, -8.74228e-08, 0, -8.74228e-08, 2, -2, 8.74228e-08, 3.82137e-15, 0, 0.382493, 5.17332e-08)
 texture = ExtResource("3_wqilb")
