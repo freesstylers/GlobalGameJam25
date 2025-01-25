@@ -7,6 +7,8 @@ signal HitBubble
 
 @onready var play_timer : Timer = $PlayTimer
 
+@export var bubble_prefabs : Array[PackedScene]
+
 var ball_moving : bool = false
 
 func _init() -> void:

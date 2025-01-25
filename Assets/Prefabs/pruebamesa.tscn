@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr48j6dww38vt"]
+[gd_scene load_steps=6 format=3 uid="uid://dr48j6dww38vt"]
 
+[ext_resource type="Script" path="res://Assets/Scripts/MesaManager.gd" id="1_ldck4"]
 [ext_resource type="ArrayMesh" uid="uid://c1q1x6ov0sumr" path="res://Assets/Models/mesa.obj" id="1_ujqa3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84ouw"]
@@ -11,7 +12,9 @@ size = Vector3(1, 1, 16)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikulw"]
 size = Vector3(10, 1, 1)
 
-[node name="MesaObject" type="Node3D"]
+[node name="MesaObject" type="Node3D" node_paths=PackedStringArray("spawners")]
+script = ExtResource("1_ldck4")
+spawners = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 1000.0
@@ -41,3 +44,15 @@ shape = SubResource("BoxShape3D_ikulw")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21954, 5.58114, 12.888)
 shape = SubResource("BoxShape3D_ikulw")
+
+[node name="Spawner4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.641, 5.5, 3.249)
+
+[node name="Spawner3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.153, 5.5, 3.265)
+
+[node name="Spawner2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.063, 5.5, 3.653)
+
+[node name="Spawner1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.617, 5.5, -2.023)

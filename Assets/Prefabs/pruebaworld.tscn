@@ -1,15 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://drfqwlguujga"]
+[gd_scene load_steps=4 format=3 uid="uid://drfqwlguujga"]
 
 [ext_resource type="PackedScene" uid="uid://87cygmj10jpd" path="res://Assets/Prefabs/pruebaplayer.tscn" id="1_ivced"]
-[ext_resource type="PackedScene" uid="uid://dxs8u8ll3d0u1" path="res://Assets/Prefabs/Bubbles/pruebaball.tscn" id="2_8c2pr"]
 [ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="3_rs5y8"]
-[ext_resource type="PackedScene" uid="uid://u2amv3j63qg6" path="res://Assets/Prefabs/Bubbles/bouncy_bubble.tscn" id="4_c585g"]
 [ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ivced")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90141, 5.5, -3.16064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90141, 5.5, 7.81388)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 4.98887, 15.1857, 2.3311)
@@ -22,14 +20,8 @@ spot_range = 17.609
 [node name="MesaObject" parent="." instance=ExtResource("3_rs5y8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979762, -0.00606847, -1.36124)
 
-[node name="Ball" parent="." instance=ExtResource("2_8c2pr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59334, 5.52157, 8.50083)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.468053, 0.8837, 0, -0.8837, -0.468053, 0, 9.1182, 0)
 light_energy = 0.677
-
-[node name="BouncyBubble" parent="." instance=ExtResource("4_c585g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54342, 5.55324, 4.0825)
 
 [node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]
