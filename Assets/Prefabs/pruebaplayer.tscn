@@ -26,13 +26,12 @@ script = ExtResource("1_1wal1")
 forceBar = NodePath("BarraPivot")
 
 [node name="BarraPivot" type="Node3D" parent="." node_paths=PackedStringArray("anim", "bar")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0, 0)
 script = ExtResource("2_ck38m")
 anim = NodePath("BarraFuerza/AnimationPlayer")
 bar = NodePath("BarraFuerza/SubViewport/ProgressBar")
 
 [node name="BarraFuerza" type="Sprite3D" parent="BarraPivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.43085, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.657, 0, 0)
 texture = SubResource("ViewportTexture_blna6")
 
 [node name="SubViewport" type="SubViewport" parent="BarraPivot/BarraFuerza"]
@@ -50,6 +49,9 @@ max_value = 1.0
 show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BarraPivot/BarraFuerza"]
+
+[node name="CameraPoint" type="Node3D" parent="BarraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_5ppcg")

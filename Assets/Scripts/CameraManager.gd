@@ -21,6 +21,7 @@ func move_camera(delta):
 	if following_player:
 		target_to_move_towards = player_node
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)
+		
 		var original_rot = camera.global_rotation
 		camera.look_at(look_target.global_position, Vector3.UP)	
 		var dest_rot = camera.global_rotation 
@@ -33,7 +34,7 @@ func move_camera(delta):
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)
 		camera.global_rotation = camera.global_rotation.lerp(target_to_move_towards.global_rotation, lerp_factor * delta)
 	
-func on_player_ball_hit():
+func on_player_ball_hit(aux):
 	following_player = false
 
 func on_player_start_turn(player_id):
