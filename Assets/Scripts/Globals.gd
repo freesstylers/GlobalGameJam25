@@ -7,8 +7,8 @@ var last_input_used : INPUT_TYPE = INPUT_TYPE.KEYBOARD
 ###########END_SIGNALS
 
 ###########VARIABLES
-var players : Array = []
+var players : Array[Player] = []
 var current_player = null
 var SceneManager : SceneManagement = null
-var PoolManager : PoolManager = null
+var PoolManager : PoolManagement = null
 ###########END_VARIABLES

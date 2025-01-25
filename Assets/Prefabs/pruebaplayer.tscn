@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://87cygmj10jpd"]
+[gd_scene load_steps=9 format=3 uid="uid://87cygmj10jpd"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaplayer.gd" id="1_1wal1"]
-[ext_resource type="Script" path="res://Assets/Scripts/UI/BallUICounterRotation.gd" id="2_hyuvj"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/BallUICounterRotation.gd" id="2_ck38m"]
 [ext_resource type="AudioStream" uid="uid://cxc7tt2awutnh" path="res://Assets/Sound/SFX/Pool/palo_hit.ogg" id="2_vs5yh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_blna6"]
+viewport_path = NodePath("BarraPivot/BarraFuerza/SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ppcg"]
 bounce = 0.5
@@ -18,64 +21,35 @@ material = SubResource("StandardMaterial3D_5cn2d")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhihy"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_blna6"]
-viewport_path = NodePath("RigidBody3D/BarraPivot/BarraFuerza/SubViewport")
-
-[sub_resource type="Animation" id="Animation_y0ovx"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_8cpua"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_0c1w2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7eoc8"]
-_data = {
-"RESET": SubResource("Animation_0c1w2"),
-"fade_in": SubResource("Animation_y0ovx"),
-"fade_out": SubResource("Animation_8cpua")
-}
-
 [node name="Player" type="Node3D" node_paths=PackedStringArray("forceBar")]
 script = ExtResource("1_1wal1")
-forceBar = NodePath("RigidBody3D/BarraPivot")
+forceBar = NodePath("BarraPivot")
+
+[node name="BarraPivot" type="Node3D" parent="." node_paths=PackedStringArray("anim", "bar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0, 0)
+script = ExtResource("2_ck38m")
+anim = NodePath("BarraFuerza/AnimationPlayer")
+bar = NodePath("BarraFuerza/SubViewport/ProgressBar")
+
+[node name="BarraFuerza" type="Sprite3D" parent="BarraPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.43085, 0, 0)
+texture = SubResource("ViewportTexture_blna6")
+
+[node name="SubViewport" type="SubViewport" parent="BarraPivot/BarraFuerza"]
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(400, 50)
+
+[node name="ProgressBar" type="ProgressBar" parent="BarraPivot/BarraFuerza/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BarraPivot/BarraFuerza"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Player"]]
 physics_material_override = SubResource("PhysicsMaterial_5ppcg")
@@ -89,32 +63,6 @@ mesh = SubResource("SphereMesh_bmnwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_mhihy")
-
-[node name="BarraPivot" type="Node3D" parent="RigidBody3D"]
-script = ExtResource("2_hyuvj")
-
-[node name="BarraFuerza" type="Sprite3D" parent="RigidBody3D/BarraPivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.56915, 0, 0)
-texture = SubResource("ViewportTexture_blna6")
-
-[node name="SubViewport" type="SubViewport" parent="RigidBody3D/BarraPivot/BarraFuerza"]
-transparent_bg = true
-gui_disable_input = true
-size = Vector2i(400, 50)
-
-[node name="ProgressBar" type="ProgressBar" parent="RigidBody3D/BarraPivot/BarraFuerza/SubViewport"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 1.0
-show_percentage = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody3D/BarraPivot/BarraFuerza/SubViewport"]
-libraries = {
-"": SubResource("AnimationLibrary_7eoc8")
-}
 
 [node name="PaloHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vs5yh")

@@ -1,4 +1,4 @@
-class_name PoolManager
+class_name PoolManagement
 extends Node
 
 signal HitBall

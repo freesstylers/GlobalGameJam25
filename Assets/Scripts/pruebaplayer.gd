@@ -4,6 +4,9 @@ extends Node3D
 @onready var rigidbody = $RigidBody3D
 @onready var palo_hit_sound = $PaloHit
 
+@onready var stick : Node3D = $BarraPivot
+var rotation_speed : float = 0.5
+
 var is_moving : bool = false
 var is_my_turn : bool = false
 
@@ -19,9 +22,11 @@ func _ready() -> void:
 	GameManager.PoolManager.StopBall.connect(stop_movement)
 	GameManager.PoolManager.PlayerStartTurn.connect(set_player_turn)
 	player_id = GameManager.PoolManager.current_players
+	GameManager.players.push_back(self)
 	GameManager.PoolManager.current_players += 1
 	
 func _process(delta: float) -> void:
+	stick.global_position = rigidbody.global_position
 	if charging:
 		charge_meter += delta
 		forceBar.bar.value = charge_meter / CHARGE_MAX
@@ -32,19 +37,27 @@ func _process(delta: float) -> void:
 	
 func _input(event):
 	if not is_moving and is_my_turn:
-		var vector = Input.get_vector("down", "up", "right", "left")
-		var vector3 = Vector3(vector.x, 0, -vector.y)
-		
+		#ROTATION
+		var input_vector = Input.get_vector("down", "up", "right", "left")
+		stick.rotate_y(input_vector.x * 0.1)
+		#SHOT
 		if Input.is_action_pressed("Accelerate"):
 			charging = true
-	
 		if Input.is_action_just_released("Accelerate"):
-			rigidbody.apply_force(vector3.normalized() * 500 * charge_meter)
-			palo_hit_sound.play()
-			GameManager.PoolManager.HitBall.emit()
 			is_moving = true
 			charging = false
 			charge_meter = 0.0
+			var shot_dir = -stick.global_transform.basis.x
+			rigidbody.apply_force(shot_dir * 500 * charge_meter)
+			palo_hit_sound.play()
+			GameManager.PoolManager.HitBall.emit()
+	
+	
+func get_stick():
+	return stick
+	
+func get_ball():
+	return rigidbody
 	
 func stop_movement():
 	rigidbody.inertia = Vector3.ZERO
