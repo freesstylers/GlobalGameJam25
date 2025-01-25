@@ -7,6 +7,7 @@ extends BaseBall
 var bubbleShader : ShaderMaterial #seteamos los parametros con seet_shader_material
 
 func _ready() -> void:
+	super._ready()
 	numhits = randi_range(0,2)
 	
 	#Buscamos el shader y lo metemos en la variable
@@ -17,6 +18,7 @@ func on_hit(body):
 	numhits -= 1
 	set_shader_color(hitColors[numhits])
 	if numhits == 0:
+		GameManager.PoolManager.HitBubble.emit()
 		queue_free()
 
 func set_shader_color(color : Color):
