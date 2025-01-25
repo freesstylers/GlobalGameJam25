@@ -13,16 +13,17 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0541608, 1.56775, 5.43927)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -1.97725, 14.6185, -1.87073)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 13.164, 0)
+fov = 83.5
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.332, 15.0725, 3.09667)
-light_energy = 5.202
-spot_range = 17.609
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.468053, 0.8837, 0, -0.8837, -0.468053, 0, 9.1182, 0)
-light_energy = 0.677
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.487, 0)
+light_color = Color(1, 1, 0.823529, 1)
+light_energy = 20.0
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 29.152
+spot_angle = 61.875
 
 [node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]
 

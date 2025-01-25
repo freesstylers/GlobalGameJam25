@@ -8,6 +8,7 @@ extends Bubble
 func _ready() -> void:
 	super._ready()
 	numhits = randi_range(0,2)
+	set_shader_color(hitColors[numhits])
 	
 
 func on_hit(body):
@@ -18,4 +19,7 @@ func on_hit(body):
 		queue_free()
 
 func set_shader_color(color : Color):
-	bubbleShader.set_shader_parameter("bubble_color", Vector4(color.r, color.g, color.b, color.a))
+	var aux_shader : ShaderMaterial = bubbleShader.duplicate(true)
+	aux_shader.set_shader_parameter("bubble_color", Vector4(color.r, color.g, color.b, color.a))
+	bubbleShader = aux_shader.duplicate(true)
+	

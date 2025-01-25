@@ -20,14 +20,18 @@ noise = SubResource("FastNoiseLite_mj1u8")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y62dy"]
 render_priority = 0
 shader = ExtResource("2_jpi3b")
-shader_parameter/bubble_color = Color(0.847059, 0.32549, 0.27451, 0.729412)
-shader_parameter/alpha_bubble = -0.7
-shader_parameter/height_multiplier = 0.5
-shader_parameter/noise_sample_size = 0.2
+shader_parameter/bubble_color = Color(0.847059, 0.32549, 0.27451, 0.784314)
+shader_parameter/alpha_bubble = -0.55
+shader_parameter/height_multiplier = 0.2
+shader_parameter/noise_sample_size = 0.04
 shader_parameter/animation_speed = 0.03
+shader_parameter/radio = 1.5
+shader_parameter/metallic = 0.5
+shader_parameter/roughness = 0.2
 shader_parameter/noise = SubResource("NoiseTexture2D_4u1r3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_1ymkk"]
+resource_local_to_scene = true
 material = SubResource("ShaderMaterial_y62dy")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d0703"]
@@ -43,7 +47,7 @@ stream_5/stream = ExtResource("7_iq7tt")
 [node name="BouncyBubble" type="Node3D"]
 script = ExtResource("1_guc2f")
 numhits = 2
-hitColors = Array[Color]([Color(0.898039, 0.890196, 0.101961, 0.662745), Color(0.913725, 0.435294, 0.0862745, 0.662745), Color(0.847059, 0.156863, 0.152941, 0.733333)])
+hitColors = Array[Color]([Color(0.768627, 0.0117647, 0.666667, 1), Color(0.133333, 0.435294, 0.0862745, 1), Color(0.847059, 0.156863, 0.152941, 1)])
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
