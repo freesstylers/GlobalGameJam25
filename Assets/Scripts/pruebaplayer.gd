@@ -49,7 +49,7 @@ func _input(event):
 			is_moving = true
 			charging = false
 			charge_meter = 0.0
-			stick.visible = false
+			forceBar.toggleState(false)
 	
 func get_stick():
 	return $BarraPivot/CameraPoint
@@ -72,9 +72,8 @@ func apply_gravity_force(dir : Vector3):
 	
 func set_player_turn(num):
 	is_my_turn = (num == player_id)
-	forceBar.toggleState(is_my_turn)
 	
 	if is_my_turn:
-		stick.visible = true
+		forceBar.toggleState(true)
 		stick.global_position = rigidbody.global_position #PENDING TO CHANGE
 		forceBar.bar.value = 0

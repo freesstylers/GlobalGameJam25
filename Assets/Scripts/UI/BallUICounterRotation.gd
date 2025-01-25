@@ -16,6 +16,6 @@ func _process(delta: float) -> void:
 	#global_rotation = rot
 
 func toggleState(state : bool) -> void:
-	#if state: anim.play("fade_in")
-	#else: anim.play("fade_out")
+	if state: anim.play("fade_in")
+	else: anim.play("fade_out")
 	pass

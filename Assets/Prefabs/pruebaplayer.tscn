@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://87cygmj10jpd"]
+[gd_scene load_steps=13 format=3 uid="uid://87cygmj10jpd"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaplayer.gd" id="1_1wal1"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI/BallUICounterRotation.gd" id="2_ck38m"]
@@ -6,6 +6,58 @@
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_blna6"]
 viewport_path = NodePath("BarraPivot/BarraFuerza/SubViewport")
+
+[sub_resource type="Animation" id="Animation_da5s6"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qbh8w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a786w"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6afy"]
+_data = {
+"RESET": SubResource("Animation_qbh8w"),
+"fade_in": SubResource("Animation_da5s6"),
+"fade_out": SubResource("Animation_a786w")
+}
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ppcg"]
 bounce = 0.5
@@ -32,6 +84,7 @@ bar = NodePath("BarraFuerza/SubViewport/ProgressBar")
 
 [node name="BarraFuerza" type="Sprite3D" parent="BarraPivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.657, 0, 0)
+modulate = Color(1, 1, 1, 0)
 texture = SubResource("ViewportTexture_blna6")
 
 [node name="SubViewport" type="SubViewport" parent="BarraPivot/BarraFuerza"]
@@ -49,6 +102,9 @@ max_value = 1.0
 show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BarraPivot/BarraFuerza"]
+libraries = {
+"": SubResource("AnimationLibrary_x6afy")
+}
 
 [node name="CameraPoint" type="Node3D" parent="BarraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
