@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://v812xw74hhfr"]
+[gd_scene load_steps=6 format=3 uid="uid://v812xw74hhfr"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Test/cameraTest.gd" id="1_shc7p"]
 [ext_resource type="Script" path="res://Assets/Scripts/Test/progress_barTEST.gd" id="2_7vecg"]
+[ext_resource type="PackedScene" uid="uid://c70dalttwrls6" path="res://Assets/Prefabs/UI/par_table.tscn" id="3_6veu3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y8nj6"]
 
@@ -38,3 +39,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.63937)
 fov = 121.445
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ParTable" parent="Control" instance=ExtResource("3_6veu3")]
+layout_mode = 1
+anchor_left = 0.177083
+anchor_top = 0.359568
+anchor_right = 0.822917
+anchor_bottom = 0.640432
+testHoles = 10
+testValues = PackedInt32Array(2, 1, 123, 3)
+testValuesP2 = PackedInt32Array(1, 2, 4, 3)
