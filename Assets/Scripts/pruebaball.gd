@@ -11,3 +11,6 @@ func _on_rigid_body_3d_body_entered(body):
 func on_hit(body):
 	GameManager.PoolManager.HitBubble.emit()
 	queue_free()
+
+func on_death():
+	pass
