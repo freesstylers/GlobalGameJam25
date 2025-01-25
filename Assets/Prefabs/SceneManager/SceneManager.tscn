@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bk43jhsw5sywy"]
 
-[ext_resource type="PackedScene" uid="uid://wytauolwph72" path="res://Assets/Scenes/MainMenu.tscn" id="1_3ccln"]
+[ext_resource type="PackedScene" uid="uid://wytauolwph72" path="res://Assets/Prefabs/MainMenu.tscn" id="1_3ccln"]
 [ext_resource type="Script" path="res://Assets/Prefabs/SceneManager/SceneManager.gd" id="1_d07kg"]
 [ext_resource type="PackedScene" uid="uid://c6kwux5euwagh" path="res://Assets/Prefabs/TransitionScreen/Transition.tscn" id="1_glc8e"]
-[ext_resource type="PackedScene" uid="uid://cx4xahm8ijcgd" path="res://Assets/Scenes/Maps/Mapa 2.tscn" id="2_bd3ns"]
-[ext_resource type="PackedScene" uid="uid://p6a4aoanplrj" path="res://Assets/Scenes/Maps/Prueba Tileset Ignacio.tscn" id="3_utxg5"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Maps/Mapa 2.tscn" id="2_bd3ns"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Maps/Prueba Tileset Ignacio.tscn" id="3_utxg5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vnqq6"]
 animations = [{
