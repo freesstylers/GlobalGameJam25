@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://csd230kuta24i"]
+
+[ext_resource type="PackedScene" uid="uid://gtcbarcuu30n" path="res://Assets/Models/MesaTriangular.glb" id="1_sqko4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkft8"]
+size = Vector3(20, 0.1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chjgk"]
+size = Vector3(19, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3qyy"]
+size = Vector3(1, 1, 19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdwrl"]
+size = Vector3(19, 1, 1)
+
+[node name="MesaTriangular" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 1000.0
+gravity_scale = 0.0
+freeze = true
+
+[node name="MesaTriangular" parent="RigidBody3D" instance=ExtResource("1_sqko4")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="Floor" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0791736, 0.314866, -2.54084)
+shape = SubResource("BoxShape3D_tkft8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 5.45007)
+shape = SubResource("BoxShape3D_chjgk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.40463, 0.773436, -3.27075)
+shape = SubResource("BoxShape3D_y3qyy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -4.74, 0.7, -2.693)
+shape = SubResource("BoxShape3D_jdwrl")
