@@ -5,6 +5,7 @@ extends Node3D
 @onready var palo_hit_sound = $PaloHit
 
 var is_moving : bool = false
+var is_my_turn : bool = false
 
 func _ready() -> void:
 	GameManager.PoolManager.StopBall.connect(stop_movement)
