@@ -3,12 +3,12 @@ extends Node
 @onready var TableRow = preload("res://Assets/Prefabs/UI/table_row.tscn")
 @onready var TableCell = preload("res://Assets/Prefabs/UI/table_cell.tscn")
 
-@export var testHoles : int
-@export var testValues : PackedInt32Array
-@export var testValuesP2 : PackedInt32Array
+#@export var testHoles : int
+#@export var testValues : PackedInt32Array
+#@export var testValuesP2 : PackedInt32Array
 
 func _ready() -> void:
-	Fill(testHoles, testValues, 87, false, testValuesP2, 76)
+	#Fill(testHoles, testValues, 87, false, testValuesP2, 76)
 	pass
 
 func FillP1(size : int, values : PackedInt32Array, total : int):
