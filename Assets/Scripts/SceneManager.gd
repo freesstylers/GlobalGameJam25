@@ -1,6 +1,6 @@
 class_name SceneManagement extends Node
 
-enum GAME_SCENE {MAIN_MENU, PLAY_SCENE, NULL}
+enum GAME_SCENE {SPLASH_SCENE, MAIN_MENU, PLAY_SCENE, NULL}
 @export var Scenes : Array[SceneResource] = []
 @onready var loadingScreen : LoadingScreen = $LoadingScreen
 
@@ -9,9 +9,10 @@ var currentSceneEnum : GAME_SCENE = GAME_SCENE.NULL
 var currentScene : Node = null
 
 func _ready() -> void:
-	change_to_scene(GAME_SCENE.MAIN_MENU)
+	GameManager.SceneManager = self
+	force_load_scene(GAME_SCENE.SPLASH_SCENE)
 	
-func change_to_scene(nextScene):
+func change_to_scene(nextScene : GAME_SCENE):
 	if isLoadingScene or currentSceneEnum == nextScene:
 		return
 		
@@ -19,8 +20,13 @@ func change_to_scene(nextScene):
 	currentSceneEnum = nextScene
 	loadingScreen.StartLoadingScreen()
 
-func load_scene(): #FORCE
-	pass
+#Adds the scene with no loading screen, no nothing
+func force_load_scene(scene_to_add : GAME_SCENE): 
+	if currentScene != null:
+		currentScene.queue_free()
+	currentScene = get_packed_scene(scene_to_add).instantiate()
+	add_child(currentScene)
+
 ################################################################
 #####################FADE IN / FADE OUT#########################
 ################################################################

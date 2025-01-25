@@ -18,10 +18,16 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 GameManager="*res://Assets/Scripts/Globals.gd"
+sp="*res://addons/awesome_splash/utils_splash.gd"
+gd="*res://addons/godot-action/utils_gd_action.tscn"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
 
 [input]
 

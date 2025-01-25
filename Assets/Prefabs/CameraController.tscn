@@ -2,9 +2,5 @@
 
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="3_8dtv5"]
 
-[node name="CameraManager" type="Node3D" node_paths=PackedStringArray("camera", "look_target", "path_follow", "default_pos")]
+[node name="CameraManager" type="Node3D"]
 script = ExtResource("3_8dtv5")
-camera = NodePath("")
-look_target = NodePath("")
-path_follow = NodePath("")
-default_pos = NodePath("")
