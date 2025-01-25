@@ -7,11 +7,16 @@ extends Node3D
 var is_moving : bool = false
 var is_my_turn : bool = false
 
+var player_id : int = 0
+
 var charging : bool = false
 var charge_meter : float = 0.0
 
 func _ready() -> void:
 	GameManager.PoolManager.StopBall.connect(stop_movement)
+	GameManager.PoolManager.PlayerStartTurn.connect(set_player_turn)
+	player_id = GameManager.PoolManager.current_players
+	GameManager.PoolManager.current_players += 1
 	
 func _process(delta: float) -> void:
 	if charging:
@@ -20,7 +25,7 @@ func _process(delta: float) -> void:
 			charge_meter = 3.0
 	
 func _input(event):
-	if not is_moving:
+	if not is_moving and is_my_turn:
 		var vector = Input.get_vector("down", "up", "right", "left")
 		var vector3 = Vector3(vector.x, 0, -vector.y)
 		
@@ -40,3 +45,6 @@ func stop_movement():
 	rigidbody.linear_velocity = Vector3.ZERO
 	rigidbody.angular_velocity = Vector3.ZERO
 	is_moving = false
+	
+func set_player_turn(num):
+	is_my_turn = (num == player_id)

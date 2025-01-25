@@ -25,3 +25,6 @@ transform = Transform3D(1, 0, 0, 0, -0.468053, 0.8837, 0, -0.8837, -0.468053, 0,
 light_energy = 0.677
 
 [node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]
+
+[node name="Player2" parent="." instance=ExtResource("1_ivced")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09067, 1.599, 4.44037)

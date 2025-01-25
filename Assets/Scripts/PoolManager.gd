@@ -15,6 +15,7 @@ var ball_moving : bool = false
 var player_turn : int = 0
 var max_players : int = 2
 var num_players : int = 1
+var current_players : int = 0
 
 var player_bubble_count : Array[int]
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 	HitBubble.connect(hit_bubble)
 	for i in num_players:
 		player_bubble_count.append(0)
+	PlayerStartTurn.emit(player_turn)
 	
 func start_play():
 	play_timer.start()
@@ -42,8 +44,10 @@ func _on_play_timer_timeout() -> void:
 	if player_turn > num_players:
 		player_turn = 0
 	PlayerStartTurn.emit(player_turn)
+	print("Next turn")
 	
 func reset_game():
 	player_turn = 0
 	for i in player_bubble_count.size():
 		player_bubble_count[i] = 0
+	
