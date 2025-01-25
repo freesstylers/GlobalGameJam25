@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://v812xw74hhfr"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Test/progress_barTEST.gd" id="1_16qkb"]
-[ext_resource type="Script" path="res://Assets/Scripts/Test/cameraTest.gd" id="1_qrg6o"]
+[ext_resource type="Script" path="res://Assets/Scripts/Test/cameraTest.gd" id="1_shc7p"]
+[ext_resource type="Script" path="res://Assets/Scripts/Test/progress_barTEST.gd" id="2_7vecg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y8nj6"]
 
@@ -12,7 +12,7 @@ viewport_path = NodePath("MeshInstance3D/Sprite3D/SubViewport")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_y8nj6")
-script = ExtResource("1_qrg6o")
+script = ExtResource("1_shc7p")
 speed = 0.7
 
 [node name="Sprite3D" type="Sprite3D" parent="MeshInstance3D"]
@@ -28,7 +28,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.246914
 grow_horizontal = 2
-script = ExtResource("1_16qkb")
+script = ExtResource("2_7vecg")
 metadata/_edit_use_anchors_ = true
 
 [node name="Node3D" type="Node3D" parent="."]

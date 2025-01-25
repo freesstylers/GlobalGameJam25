@@ -8,22 +8,15 @@ var menu = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globals.connect("loadLevel", loadLevel)
-
-	pass # Replace with function body.	
-
-func loadLevel():
-
-	$CurrentScene.get_child(0).queue_free()
+	GameManager.connect("loadLevel", loadLevel)
 	
-		
+func loadLevel():
+	$CurrentScene.get_child(0).queue_free()
 	if get_tree().paused:
 		get_tree().paused = false
-	
 	if menu:
 		$CurrentScene.add_child(mainMenu.instantiate())
 		return
-		
 	var rng = RandomNumberGenerator.new()
 	var level = rng.randi_range(0,1)
 		
