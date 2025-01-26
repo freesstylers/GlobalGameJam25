@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://drfqwlguujga"]
+[gd_scene load_steps=8 format=3 uid="uid://drfqwlguujga"]
 
-[ext_resource type="PackedScene" uid="uid://87cygmj10jpd" path="res://Assets/Prefabs/pruebaplayer.tscn" id="1_ivced"]
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_uj53o"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="4_kngja"]
 [ext_resource type="PackedScene" uid="uid://dxs8u8ll3d0u1" path="res://Assets/Prefabs/Bubbles/pruebaball.tscn" id="4_yvoml"]
@@ -13,12 +12,6 @@
 
 [node name="MesaHexagonal" parent="." instance=ExtResource("1_uj53o")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-
-[node name="Player" parent="." instance=ExtResource("1_ivced")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0541608, 1.22289, 5.43927)
-
-[node name="Player2" parent="." instance=ExtResource("1_ivced")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09067, 0.996318, 4.44037)
 
 [node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]
 bubble_prefabs = Array[PackedScene]([ExtResource("4_yvoml"), ExtResource("5_wo6on"), ExtResource("6_6df2g")])

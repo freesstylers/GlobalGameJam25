@@ -10,6 +10,7 @@ signal PlayerStartTurn(num)
 
 @onready var play_timer : Timer = $PlayTimer
 @export var bubble_prefabs : Array[PackedScene]
+@export var player_prefab : PackedScene
 
 var ball_moving : bool = false
 
@@ -38,6 +39,8 @@ func _exit_tree() -> void:
 	GameManager.PoolManager = null
 
 func _ready() -> void:
+	mesa_manager.spawn_bubbles()
+	mesa_manager.spawn_players()
 	for i in num_players:
 		player_bubble_count.append(0)
 	PlayerStartTurn.emit(player_turn)
