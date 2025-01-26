@@ -57,6 +57,11 @@ func _ready() -> void:
 	mesa_manager.spawn_players()
 	PlayerStartTurn.emit(player_turn)
 	max_bubbles = alive_bubbles
+	
+	for j in GameManager.num_players_in_game:
+		var control = $GameUI/Control
+		control.activateUI_Player(j)
+	
 	reset_game()
 		
 func start_play(charge):
@@ -70,17 +75,20 @@ func new_bubble():
 	
 func hit_bubble():
 	score_this_turn += 1
+	total_scores[player_turn] += 1
 	alive_bubbles -= 1
 	#if GameManager.num_players_in_game == 1:
 		#hit_bubble_1player()
 	#else:
 		#hit_bubble_multiplayer()
+		
+	
+		
 	$AudioStreamPlayer.play()
 	
 	if alive_bubbles == 0:
 		play_timer.stop()
 		scores_per_turn[player_turn].push_back(score_this_turn)
-		total_scores[player_turn] += score_this_turn
 		StopBall.emit()
 
 		GameEnded.emit()
@@ -119,7 +127,6 @@ func _on_play_timer_timeout() -> void:
 	
 func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
-	total_scores[player_turn] += score_this_turn
 	
 	if alive_bubbles <= 0:
 		GameEnded.emit()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0kvj61ueo860"]
+[gd_scene load_steps=5 format=3 uid="uid://b0kvj61ueo860"]
 
 [ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_gbwi2"]
 [ext_resource type="PackedScene" uid="uid://c70dalttwrls6" path="res://Assets/Prefabs/UI/par_table.tscn" id="2_8p23u"]
+[ext_resource type="Script" path="res://Assets/Prefabs/UI/PlayerUIController.gd" id="3_j0eo0"]
+[ext_resource type="Script" path="res://Assets/Prefabs/UI/PlayerUI.gd" id="3_rwqkd"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -20,7 +22,15 @@ anchor_right = 0.822049
 anchor_bottom = 0.646605
 offset_top = -1.52588e-05
 
-[node name="P1_UI" type="HBoxContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+anchor_right = 0.0347222
+anchor_bottom = 0.0617284
+script = ExtResource("3_j0eo0")
+metadata/_edit_use_anchors_ = true
+
+[node name="P1_UI" type="HBoxContainer" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0217014
@@ -30,9 +40,10 @@ anchor_bottom = 0.112654
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+script = ExtResource("3_rwqkd")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="P1_UI"]
+[node name="Label" type="Label" parent="Control/P1_UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -40,14 +51,15 @@ text = "PLAYER 1 - "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SCORE" type="Label" parent="P1_UI"]
+[node name="SCORE" type="Label" parent="Control/P1_UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "0"
 vertical_alignment = 1
 
-[node name="P2_UI" type="HBoxContainer" parent="."]
+[node name="P2_UI" type="HBoxContainer" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.77691
@@ -56,9 +68,10 @@ anchor_right = 0.978299
 anchor_bottom = 0.112654
 grow_horizontal = 0
 alignment = 1
+script = ExtResource("3_rwqkd")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="P2_UI"]
+[node name="Label" type="Label" parent="Control/P2_UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -66,7 +79,7 @@ text = "PLAYER 2 - "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SCORE" type="Label" parent="P2_UI"]
+[node name="SCORE" type="Label" parent="Control/P2_UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1

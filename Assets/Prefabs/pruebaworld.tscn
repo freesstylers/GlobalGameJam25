@@ -11,8 +11,9 @@
 
 [node name="HEXPOOL" type="Node3D"]
 
-[node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]
+[node name="PoolManager" parent="." node_paths=PackedStringArray("caster_audios") instance=ExtResource("5_8m4cp")]
 bubble_prefabs = Array[PackedScene]([ExtResource("4_yvoml"), ExtResource("5_wo6on"), ExtResource("6_6df2g")])
+caster_audios = []
 
 [node name="ParTable2" parent="PoolManager" instance=ExtResource("5_2ihfc")]
 

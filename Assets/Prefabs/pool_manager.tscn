@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="5_y71oi"]
 [ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="6_riq1k"]
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="7_xxwn5"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
+[ext_resource type="PackedScene" uid="uid://b0kvj61ueo860" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="8_l4te8"]
 [ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="9_1acr6"]
 [ext_resource type="Texture2D" uid="uid://ctmgnh0hs142m" path="res://Assets/Sprites/Skyboxes/53437764612_f7326c94a8_5k.jpg" id="9_mt5tn"]
@@ -43,12 +43,11 @@ sky_material = SubResource("PanoramaSkyMaterial_4n7yn")
 background_mode = 2
 sky = SubResource("Sky_k2ulb")
 
-[node name="PoolManager2" type="Node3D" node_paths=PackedStringArray("caster_audios")]
+[node name="PoolManager2" type="Node3D"]
 script = ExtResource("1_dous0")
 table_prefabs = Array[PackedScene]([ExtResource("2_cijui"), ExtResource("3_wa002"), ExtResource("12_anehg")])
 bubble_prefabs = Array[PackedScene]([ExtResource("2_xn61u"), ExtResource("3_1ajyc")])
 player_prefab = ExtResource("4_x7of8")
-caster_audios = [NodePath("Caster/Caster0"), NodePath("Caster/Caster1"), NodePath("Caster/Caster2"), NodePath("Caster/Caster3")]
 skyboxes = [ExtResource("18_587l2"), ExtResource("9_mt5tn"), ExtResource("10_ylhji"), ExtResource("11_ai005"), ExtResource("12_uyt02"), ExtResource("13_2bscs")]
 
 [node name="GameUI" parent="." instance=ExtResource("8_3yoj8")]
@@ -101,6 +100,7 @@ stream = ExtResource("17_dew7w")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ej105")
 
+[connection signal="HitBubble" from="." to="GameUI/Control" method="updateUI"]
 [connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]
 [connection signal="finished" from="Caster/Caster0" to="." method="on_caster_said"]
 [connection signal="finished" from="Caster/Caster1" to="." method="on_caster_said"]

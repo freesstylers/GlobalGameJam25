@@ -5,9 +5,15 @@ class_name MainMenuManager extends Control
 @onready var MainButtonContainer : Control = $MainButtonContainer
 
 func TogglePlayMenu(state: bool):
+	GameManager.num_players_in_game = 1
 	GameManager.playButtonSFX()
 	GameManager.SceneManager.change_to_scene(SceneManagement.GAME_SCENE.PLAY_SCENE)
 
+func _on_play_2_button_down() -> void:
+	GameManager.num_players_in_game = 2
+	GameManager.playButtonSFX()
+	GameManager.SceneManager.change_to_scene(SceneManagement.GAME_SCENE.PLAY_SCENE)
+	
 func _on_level_button_down(level: int):
 	GameManager.playButtonSFX()
 	#get_tree().root.get_node("SceneManager").startGame(level)
