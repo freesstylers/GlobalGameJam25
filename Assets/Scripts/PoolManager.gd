@@ -80,7 +80,7 @@ func hit_bubble_multiplayer():
 func _on_play_timer_timeout() -> void:
 	StopBall.emit()
 	player_turn += 1
-	if player_turn > num_players:
+	if player_turn > num_players-1:
 		player_turn = 0
 	PlayerStartTurn.emit(player_turn)
 	print("Next turn")
