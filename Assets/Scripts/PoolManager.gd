@@ -51,11 +51,7 @@ func _ready() -> void:
 	mesa_manager.spawn_players()
 	PlayerStartTurn.emit(player_turn)
 	max_bubbles = alive_bubbles
-	score_this_turn = 0
-	scores_per_turn.push_back([])
-	scores_per_turn.push_back([])
-	total_scores.push_back(0)
-	total_scores.push_back(0)
+	reset_game()
 		
 func start_play(charge):
 	play_timer.wait_time = 10
@@ -69,44 +65,55 @@ func new_bubble():
 	
 func hit_bubble():
 	score_this_turn += 1
-	if GameManager.num_players_in_game == 1:
-		hit_bubble_1player()
-	else:
-		hit_bubble_multiplayer()
+	alive_bubbles -= 1
+	#if GameManager.num_players_in_game == 1:
+		#hit_bubble_1player()
+	#else:
+		#hit_bubble_multiplayer()
 	$AudioStreamPlayer.play()
 	
-func hit_bubble_1player():
-	alive_bubbles -= 1
-	if alive_bubbles <= 0:
-		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
-	else:
-		pass
+#func hit_bubble_1player():
+	#if alive_bubbles <= 0:
+		#scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
+	#else:
+		#pass
+	#
+#func hit_bubble_multiplayer():
+	#if alive_bubbles <= 0:
+		#GameEnded.emit()
+		#scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
+	#if alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
 		#mesa_manager.spawn_num_bubbles(alive_bubbles)
 		#max_bubbles = alive_bubbles
 		#num_restocks -= 1
-	
-func hit_bubble_multiplayer():
-	alive_bubbles -= 1
-	if alive_bubbles <= 0:
-		GameEnded.emit()
-		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
-	if alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
-		mesa_manager.spawn_num_bubbles(alive_bubbles)
-		max_bubbles = alive_bubbles
-		num_restocks -= 1
 
 func _on_play_timer_timeout() -> void:
 	#REACTIONS	
-	caster_audios[score_this_turn].play()
+	caster_audios[clampi(score_this_turn,0,caster_audios.size()-1)].play()
 	
 func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
 	total_scores[player_turn] += score_this_turn
-	player_turn = (player_turn + 1) % GameManager.num_players_in_game
 	StopBall.emit()
-	play_timer.stop()
+	
+	if alive_bubbles <= 0:
+		GameEnded.emit()
+		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
+		return
+	if GameManager.num_players_in_game > 1 and alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
+		mesa_manager.spawn_num_bubbles(alive_bubbles)
+		max_bubbles = alive_bubbles
+		num_restocks -= 1
+	
+	player_turn = (player_turn + 1) % GameManager.num_players_in_game
 	PlayerStartTurn.emit(player_turn)
 	
 func reset_game():
 	player_turn = 0
+	score_this_turn = 0
 	scores_per_turn.clear()
+	scores_per_turn.push_back([])
+	scores_per_turn.push_back([])
+	total_scores.clear()
+	total_scores.push_back(0)
+	total_scores.push_back(0)
