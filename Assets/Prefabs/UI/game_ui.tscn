@@ -23,9 +23,12 @@ anchor_bottom = 0.646605
 offset_top = -1.52588e-05
 
 [node name="Control" type="Control" parent="."]
-anchors_preset = 0
-anchor_right = 0.0347222
-anchor_bottom = 0.0617284
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_j0eo0")
 metadata/_edit_use_anchors_ = true
 

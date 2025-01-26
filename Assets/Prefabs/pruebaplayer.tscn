@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://87cygmj10jpd"]
+[gd_scene load_steps=15 format=3 uid="uid://87cygmj10jpd"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaplayer.gd" id="1_1wal1"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI/BallUICounterRotation.gd" id="2_ck38m"]
 [ext_resource type="AudioStream" uid="uid://cxc7tt2awutnh" path="res://Assets/Sound/SFX/Pool/palo_hit.ogg" id="2_vs5yh"]
 [ext_resource type="PackedScene" uid="uid://diqwbhulkmjnd" path="res://Assets/Models/Taco.glb" id="3_5hxh3"]
+[ext_resource type="Theme" uid="uid://dj4wjfnmh0vw2" path="res://Assets/Themes/ForceBarStyle.tres" id="3_yxevo"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_blna6"]
 viewport_path = NodePath("BarraPivot/BarraFuerza/SubViewport")
@@ -99,6 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_yxevo")
 max_value = 1.0
 show_percentage = false
 
