@@ -111,5 +111,3 @@ environment = SubResource("Environment_ej105")
 [connection signal="finished" from="Caster/Caster1" to="." method="on_caster_said"]
 [connection signal="finished" from="Caster/Caster2" to="." method="on_caster_said"]
 [connection signal="finished" from="Caster/Caster3" to="." method="on_caster_said"]
-
-[editable path="GameUI"]

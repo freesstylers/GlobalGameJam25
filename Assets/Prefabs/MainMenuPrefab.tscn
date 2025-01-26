@@ -498,6 +498,7 @@ autoplay = true
 [connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="Twitter"]
 [connection signal="button_down" from="MainButtonContainer/BlueSky" to="." method="BlueSky"]
 [connection signal="button_down" from="MainButtonContainer/jam" to="." method="Jam"]
+[connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play" to="." method="_on_play_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/play2" to="." method="_on_play_2_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]

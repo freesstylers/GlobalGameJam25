@@ -4,7 +4,7 @@ class_name MainMenuManager extends Control
 @onready var tutorial : Control = $tutorial
 @onready var MainButtonContainer : Control = $MainButtonContainer
 
-func TogglePlayMenu(state: bool):
+func _on_play_button_down() -> void:
 	GameManager.num_players_in_game = 1
 	GameManager.playButtonSFX()
 	GameManager.SceneManager.change_to_scene(SceneManagement.GAME_SCENE.PLAY_SCENE)

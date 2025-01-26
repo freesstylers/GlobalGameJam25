@@ -63,7 +63,7 @@ func AddCell(row, val):
 func _on_another_game_pressed() -> void:
 	GameManager.playButtonSFX()
 	#RELOAD LEVEL
-
+	GameManager.PoolManager.on_start_game()
 
 func _on_main_menu_button_pressed() -> void:
 	GameManager.playButtonSFX()

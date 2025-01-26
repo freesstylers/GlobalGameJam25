@@ -48,23 +48,27 @@ func _exit_tree() -> void:
 	GameManager.PoolManager = null
 
 func _ready() -> void:
-	
 	var i = randi() % skyboxes.size()
 	skyboxObj.environment.sky.sky_material.panorama = skyboxes[i]
-	
+	on_start_game()
+
+func on_start_game():
 	scoreBoard.Fade(0,0) #Hide the scoreboard
+	if mesa_manager:
+		mesa_manager.queue_free()
 	mesa_manager = table_prefabs[randi()%table_prefabs.size()].instantiate()
 	add_child(mesa_manager)
+	mesa_manager.scale = Vector3.ZERO
+	var tween = create_tween()
+	tween.tween_property(mesa_manager,"scale", Vector3(1.5,1.5,1.5), 1)
 	mesa_manager.scale = Vector3(1.5,1.5,1.5)
 	mesa_manager.spawn_bubbles()
 	mesa_manager.spawn_players()
 	PlayerStartTurn.emit(player_turn)
 	max_bubbles = alive_bubbles
-	
 	for j in GameManager.num_players_in_game:
 		var control = $GameUI/Control
 		control.activateUI_Player(j)
-	
 	reset_game()
 		
 func start_play(charge):

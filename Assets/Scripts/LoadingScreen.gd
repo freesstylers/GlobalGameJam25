@@ -13,8 +13,8 @@ func StartLoadingScreen():
 	var localTween  = create_tween()
 	localTween.tween_property(self, "modulate:a", 1, 0.5)
 	localTween.tween_callback(func():
-		loading_screen_faded_in.emit()
 		minLoadingTimeTimer.start()
+		loading_screen_faded_in.emit()
 		)
 		
 func EndLoadingScreen():
