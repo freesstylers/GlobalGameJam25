@@ -22,9 +22,10 @@ func set_shader_color(color : Color, alpha : float):
 	bubbleShader.set_shader_parameter("bubble_color", Vector4(color.r, color.g, color.b, color.a))
 	bubbleShader.set_shader_parameter("alpha_bubble", alpha)
 	
-func set_shader_shake(height_multiplier : float, noise_sample_size : float):
+func set_shader_shake(height_multiplier : float, noise_sample_size : float, animation_speed : float):
 	bubbleShader.set_shader_parameter("height_multiplier", height_multiplier)
 	bubbleShader.set_shader_parameter("noise_sample_size", noise_sample_size)
+	bubbleShader.set_shader_parameter("animation_speed", animation_speed)
 	
 func on_death() -> void:
 	$RigidBody3D.queue_free()

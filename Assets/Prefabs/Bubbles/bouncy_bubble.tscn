@@ -48,7 +48,8 @@ numhits = 2
 hitColors = Array[Color]([Color(0.792157, 0.137255, 0.117647, 0.686275), Color(0.792157, 0.137255, 0.117647, 1)])
 alpha_colors = Array[float]([-0.7, -0.1])
 height_multiplier = 0.3
-noise_sample_size = 0.15
+noise_sample_size = 0.1
+animation_speed = 0.04
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
