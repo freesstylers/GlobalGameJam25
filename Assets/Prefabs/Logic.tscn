@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0nr4hn1nsh6f"]
+[gd_scene load_steps=14 format=3 uid="uid://c0nr4hn1nsh6f"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/SceneManager.gd" id="1_7lk6b"]
 [ext_resource type="Script" path="res://Assets/Resources/Scene/SceneResource.gd" id="2_g3ke3"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://brkk2air3c0ef" path="res://Assets/Prefabs/LoadingScreen.tscn" id="4_ukkks"]
 [ext_resource type="PackedScene" uid="uid://dv31ttuyw5rnf" path="res://Assets/Prefabs/MainMenuPrefab.tscn" id="4_wpgho"]
 [ext_resource type="Script" path="res://Assets/Scripts/InputManager.gd" id="5_xeqoe"]
+[ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="7_y1kjh"]
+[ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="8_etebn"]
+[ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="9_ba3re"]
+[ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="10_c38dm"]
 
 [sub_resource type="Resource" id="Resource_131i1"]
 script = ExtResource("2_g3ke3")
@@ -17,6 +21,13 @@ script = ExtResource("2_g3ke3")
 scene_enum = 1
 scene_packed_scene = ExtResource("4_wpgho")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_diga4"]
+streams_count = 4
+stream_0/stream = ExtResource("7_y1kjh")
+stream_1/stream = ExtResource("8_etebn")
+stream_2/stream = ExtResource("9_ba3re")
+stream_3/stream = ExtResource("10_c38dm")
+
 [node name="SceneManager" type="Node3D"]
 script = ExtResource("1_7lk6b")
 Scenes = Array[ExtResource("2_g3ke3")]([SubResource("Resource_131i1"), SubResource("Resource_7dvcd")])
@@ -25,3 +36,6 @@ Scenes = Array[ExtResource("2_g3ke3")]([SubResource("Resource_131i1"), SubResour
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("5_xeqoe")
+
+[node name="ButtonSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_diga4")

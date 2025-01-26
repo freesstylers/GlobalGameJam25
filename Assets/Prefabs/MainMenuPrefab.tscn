@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dv31ttuyw5rnf"]
+[gd_scene load_steps=16 format=3 uid="uid://dv31ttuyw5rnf"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Assets/Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -6,7 +6,6 @@
 [ext_resource type="Theme" uid="uid://dg651pgtwypi2" path="res://Assets/Themes/ImgButton.tres" id="4_n67yd"]
 [ext_resource type="Texture2D" uid="uid://dj0dhf82rc151" path="res://Assets/Sprites/Twitter.png" id="5_60nta"]
 [ext_resource type="Texture2D" uid="uid://drbe1j77opppx" path="res://Assets/Sprites/GGJ_Logo.png" id="6_apn8y"]
-[ext_resource type="AudioStream" uid="uid://b7as1daw61vin" path="res://Assets/Sound/SFX/Button/bubble_button.ogg" id="8_0i04t"]
 [ext_resource type="Texture2D" uid="uid://drw3jni7sf11v" path="res://Assets/UI/InputPrompts/gamepad icon.png" id="8_8wogb"]
 [ext_resource type="FontFile" uid="uid://bnu0s2kb4sfvc" path="res://Assets/Fonts/Larceny.ttf" id="9_spall"]
 [ext_resource type="Texture2D" uid="uid://ccolws14a0y7q" path="res://Assets/UI/InputPrompts/keyboard icon.png" id="9_v12d2"]
@@ -466,11 +465,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Close"
 metadata/_edit_use_anchors_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_0i04t")
-volume_db = -15.287
-autoplay = true
 
 [connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="FreeStylers"]
 [connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="Twitter"]

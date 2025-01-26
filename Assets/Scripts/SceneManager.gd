@@ -10,6 +10,7 @@ var currentScene : Node = null
 
 func _ready() -> void:
 	GameManager.SceneManager = self
+	GameManager.ButtonSFX = $ButtonSFX
 	force_load_scene(GAME_SCENE.SPLASH_SCENE)
 	
 func change_to_scene(nextScene : GAME_SCENE):
