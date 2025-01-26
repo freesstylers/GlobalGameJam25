@@ -7,6 +7,10 @@ extends Node3D
 @onready var stick : Node3D = $BarraPivot
 @onready var stick_model : Node3D = $BarraPivot/Taco
 
+#Particles
+@onready var hit_particles : GPUParticles3D = $RigidBody3D/RotParticulas/HitParticles
+@onready var particles_point : Node3D = $RigidBody3D/RotParticulas
+
 var rotation_speed : float = 0.5
 
 var is_moving : bool = false
@@ -53,6 +57,8 @@ func _input(event):
 			local_tween.tween_property(stick_model, "position:x", original_pos.x, 0.3 - (charge_meter/3 * 0.2))
 			local_tween.tween_callback(func():
 				GameManager.PoolManager.HitBall.emit(charge_meter)
+				particles_point.rotation = stick.rotation
+				hit_particles.emitting = true
 				palo_hit_sound.play()
 				charging = false
 				rigidbody.apply_force(shot_dir * 500 * charge_meter)
