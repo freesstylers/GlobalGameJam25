@@ -15,13 +15,12 @@ func _ready() -> void:
 	bubbleShader.get_shader_parameter("noise").noise = fastNoise
 	
 	#sistema de particulas para la explosion de la burbuja
-	particle_system = $RigidBody3D/DeathParticles as GPUParticles3D
+	particle_system = $DeathParticles as GPUParticles3D
 
 func set_shader_color(color : Color):
 	bubbleShader.set_shader_parameter("bubble_color", Vector4(color.r, color.g, color.b, color.a))
 	
 func on_death() -> void:
-	super.on_death()
 	#owner.add_child(particle_system)
 	#.add_sibling(particle_system)
-	pass
+	super.on_death()

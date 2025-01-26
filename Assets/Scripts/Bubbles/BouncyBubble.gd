@@ -14,8 +14,8 @@ func _ready() -> void:
 func on_hit(body):
 	numhits -= 1
 	if numhits <= 0:
-		on_death()
 		GameManager.PoolManager.HitBubble.emit()
+		on_death()
 		queue_free()
 	else:
 		$Hit.play()

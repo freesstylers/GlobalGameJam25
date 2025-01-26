@@ -29,6 +29,7 @@ shader_parameter/roughness = 0.2
 shader_parameter/noise = SubResource("NoiseTexture2D_n1xmb")
 
 [sub_resource type="SphereMesh" id="SphereMesh_oclog"]
+resource_local_to_scene = true
 lightmap_size_hint = Vector2i(17, 9)
 material = SubResource("ShaderMaterial_d10nv")
 
@@ -56,13 +57,16 @@ contact_monitor = true
 max_contacts_reported = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+visible = false
 shape = SubResource("SphereShape3D_s8rjv")
 
 [node name="BubbleMesh" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("SphereMesh_oclog")
 
-[node name="DeathParticles" parent="RigidBody3D" instance=ExtResource("3_5ksim")]
+[node name="DeathParticles" parent="." instance=ExtResource("3_5ksim")]
+visible = false
+amount = 5
 draw_pass_1 = SubResource("SphereMesh_ckimm")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
