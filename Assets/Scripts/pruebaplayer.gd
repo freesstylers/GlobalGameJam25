@@ -37,11 +37,13 @@ func _process(delta: float) -> void:
 		if charge_meter > CHARGE_MAX:
 			charge_meter = CHARGE_MAX
 	
-func _input(event):
+	ProcessInput(delta)
+	
+func ProcessInput(delta):
 	if not is_moving and is_my_turn:
 		#ROTATION
 		var input_vector = Input.get_vector("left", "right", "right", "left")
-		stick.rotate_y(input_vector.x * 0.05)
+		stick.rotate_y(input_vector.x * 1 * delta)
 		#SHOT
 		if Input.is_action_pressed("Accelerate"):
 			charging = true
