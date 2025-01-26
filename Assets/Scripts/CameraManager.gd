@@ -40,7 +40,19 @@ func move_camera(delta):
 	else:
 		target_to_move_towards = default_pos
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)
-		camera.global_rotation = camera.global_rotation.lerp(target_to_move_towards.global_rotation, lerp_factor * delta)
+##
+		var original_rot = camera.global_rotation
+		var dest_rot = target_to_move_towards.global_rotation 
+		#MATH MAGIC
+		if sign(original_rot.y) != sign(dest_rot.y):
+			if not (abs(original_rot.y) < PI/2 or abs(dest_rot.y) < PI/2):
+				if sign(original_rot.y) == 1:
+					var test = PI - original_rot.y
+					original_rot.y = -PI - test
+				else:
+					var test = -PI - original_rot.y
+					original_rot.y = PI - test
+		camera.global_rotation = original_rot.lerp(dest_rot, lerp_factor * delta)
 	
 func show_table_from_the_top():
 	following_player = false
