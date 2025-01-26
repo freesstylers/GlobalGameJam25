@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=3 uid="uid://jquukvuibrai"]
+
+[ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_vgxbj"]
+[ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="2_ywtqa"]
+[ext_resource type="PackedScene" uid="uid://dxs8u8ll3d0u1" path="res://Assets/Prefabs/Bubbles/pruebaball.tscn" id="3_d1wf6"]
+[ext_resource type="PackedScene" uid="uid://u2amv3j63qg6" path="res://Assets/Prefabs/Bubbles/bouncy_bubble.tscn" id="4_o8uqk"]
+[ext_resource type="PackedScene" uid="uid://c23s8kvrsh8w7" path="res://Assets/Prefabs/Bubbles/explode_bubble.tscn" id="5_ssarw"]
+[ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="6_meba7"]
+[ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="7_h5git"]
+[ext_resource type="Texture2D" uid="uid://bblikpe520su5" path="res://Assets/Sprites/Skyboxes/An-Pucan-Pub-Back-Bar-Galway-Panorama.jpg" id="8_j1u6y"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0j10d"]
+panorama = ExtResource("8_j1u6y")
+
+[sub_resource type="Sky" id="Sky_gawq7"]
+sky_material = SubResource("PanoramaSkyMaterial_0j10d")
+
+[sub_resource type="Environment" id="Environment_uoiuq"]
+background_mode = 2
+sky = SubResource("Sky_gawq7")
+
+[node name="HEXPOOL" type="Node3D"]
+
+[node name="MesaHexagonal" parent="." instance=ExtResource("1_vgxbj")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="PoolManager" parent="." instance=ExtResource("2_ywtqa")]
+bubble_prefabs = Array[PackedScene]([ExtResource("3_d1wf6"), ExtResource("4_o8uqk"), ExtResource("5_ssarw")])
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera", "default_pos")]
+transform = Transform3D(0.136932, -0.508591, -0.85005, -0.987273, 5.01068e-08, -0.159037, 0.0808847, 0.861008, -0.502118, 13, 12, -15)
+script = ExtResource("6_meba7")
+camera = NodePath(".")
+default_pos = NodePath("../TOP")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.487, 0)
+light_color = Color(1, 1, 0.823529, 1)
+light_energy = 20.0
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 29.152
+spot_angle = 61.875
+
+[node name="TOP" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 17, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h5git")
+volume_db = -10.306
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uoiuq")
