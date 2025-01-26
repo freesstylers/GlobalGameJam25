@@ -14,6 +14,7 @@ signal GameEnded
 @export var player_prefab : PackedScene
 @onready var play_timer : Timer = $PlayTimer
 @onready var scoreBoard : ScoreBoardManager = $ParTable
+@export var caster_audios : Array[AudioStreamPlayer] = []
 
 var ball_moving : bool = false
 
@@ -55,8 +56,7 @@ func _ready() -> void:
 	scores_per_turn.push_back([])
 	total_scores.push_back(0)
 	total_scores.push_back(0)
-	print("Max bubbles = ", max_bubbles)
-	
+		
 func start_play(charge):
 	play_timer.wait_time = 10
 	play_timer.start()
@@ -96,13 +96,16 @@ func hit_bubble_multiplayer():
 		num_restocks -= 1
 
 func _on_play_timer_timeout() -> void:
+	#REACTIONS	
+	caster_audios[score_this_turn].play()
+	
+func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
 	total_scores[player_turn] += score_this_turn
 	player_turn = (player_turn + 1) % GameManager.num_players_in_game
+	StopBall.emit()
 	play_timer.stop()
 	PlayerStartTurn.emit(player_turn)
-	StopBall.emit()
-	print("TURNO PLAYER ", player_turn + 1)
 	
 func reset_game():
 	player_turn = 0

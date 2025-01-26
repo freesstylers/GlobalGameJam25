@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cc8eguu0xw0fb"]
+[gd_scene load_steps=20 format=3 uid="uid://cc8eguu0xw0fb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/PoolManager.gd" id="1_dous0"]
 [ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="2_cijui"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="12_anehg"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="13_mmf4f"]
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="14_10ftd"]
+[ext_resource type="AudioStream" uid="uid://c7151kuoyec41" path="res://Assets/Sound/SFX/Pool/clapping.ogg" id="17_dew7w"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g6mtl"]
 streams_count = 6
@@ -25,6 +26,8 @@ stream_2/stream = ExtResource("6_riq1k")
 stream_3/stream = ExtResource("7_xxwn5")
 stream_4/stream = ExtResource("8_l4te8")
 stream_5/stream = ExtResource("9_1acr6")
+
+[sub_resource type="AudioStream" id="AudioStream_r7lr0"]
 
 [node name="PoolManager" type="Node3D"]
 script = ExtResource("1_dous0")
@@ -64,4 +67,18 @@ stream = ExtResource("14_10ftd")
 volume_db = -10.306
 autoplay = true
 
+[node name="Caster" type="Node" parent="."]
+
+[node name="Caster1" type="AudioStreamPlayer" parent="Caster"]
+stream = ExtResource("17_dew7w")
+
+[node name="Caster2" type="AudioStreamPlayer" parent="Caster"]
+stream = SubResource("AudioStream_r7lr0")
+
+[node name="Caster3" type="AudioStreamPlayer" parent="Caster"]
+stream = SubResource("AudioStream_r7lr0")
+
 [connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]
+[connection signal="finished" from="Caster/Caster1" to="." method="on_caster_said"]
+[connection signal="finished" from="Caster/Caster2" to="." method="on_caster_said"]
+[connection signal="finished" from="Caster/Caster3" to="." method="on_caster_said"]
