@@ -28,3 +28,6 @@ func _on_finished_all_splash_screen():
 		GameManager.SceneManager.force_load_scene(SceneManagement.GAME_SCENE.MAIN_MENU)
 	else:
 		push_error("Please set move_to_scene in SplashContainer")
+
+func _on_splash_twist_finished() -> void:
+	GameManager.SceneManager.FreeStylersSplash.play()

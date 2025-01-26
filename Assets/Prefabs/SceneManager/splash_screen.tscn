@@ -7,12 +7,7 @@
 
 [node name="SplashContainer" type="Node2D"]
 script = ExtResource("1_idwwl")
-custom_node/type = 0
-custom_node/default_time = 1.0
-skip/type = 0
 move_to_scene = ExtResource("2_hodti")
-transition_time = 1.0
-fade_color = Color(1, 1, 1, 1)
 
 [node name="SplashTwist" parent="." instance=ExtResource("2_r10xl")]
 logo_path = "res://Assets/UI/Splash/demo_collection/twist/src/logo.png"
@@ -20,3 +15,5 @@ logo_path = "res://Assets/UI/Splash/demo_collection/twist/src/logo.png"
 [node name="SplashFire" parent="." instance=ExtResource("4_mdce3")]
 logo_path = "res://FreeStylers_Logo_Splash.png"
 title = ""
+
+[connection signal="finished" from="SplashTwist" to="." method="_on_splash_twist_finished"]

@@ -7,6 +7,7 @@ enum GAME_SCENE {SPLASH_SCENE, MAIN_MENU, PLAY_SCENE, NULL}
 var isLoadingScene : bool = false
 var currentSceneEnum : GAME_SCENE = GAME_SCENE.NULL
 var currentScene : Node = null
+@onready var FreeStylersSplash : AudioStreamPlayer2D = $FreeStylersSpalsh
 
 func _ready() -> void:
 	GameManager.SceneManager = self
