@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dv31ttuyw5rnf"]
+[gd_scene load_steps=17 format=3 uid="uid://dv31ttuyw5rnf"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Assets/Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://br4bjm16k3d1p" path="res://Assets/UI/InputPrompts/tile_0120.png" id="12_p3p3s"]
 [ext_resource type="Texture2D" uid="uid://bfqec3k6k34y8" path="res://Assets/UI/InputPrompts/tile_0122.png" id="13_v0bkh"]
 [ext_resource type="Texture2D" uid="uid://7lksimc1oufy" path="res://Assets/UI/InputPrompts/spacebar.png" id="14_hqueg"]
+[ext_resource type="AudioStream" uid="uid://ddusdd4cucbon" path="res://Assets/Sound/Music/burbujillas.wav" id="15_mw41e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmw2b"]
 bg_color = Color(1, 1, 1, 1)
@@ -466,6 +467,10 @@ theme_override_font_sizes/font_size = 40
 text = "Close"
 metadata/_edit_use_anchors_ = true
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_mw41e")
+autoplay = true
+
 [connection signal="button_down" from="MainButtonContainer/FreeStylers" to="." method="FreeStylers"]
 [connection signal="button_down" from="MainButtonContainer/Twitter" to="." method="Twitter"]
 [connection signal="button_down" from="MainButtonContainer/jam" to="." method="Jam"]
@@ -474,5 +479,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_down" from="MainButtonContainer/MainButtonContainer/Credits" to="." method="_on_credits_button_down"]
 [connection signal="button_down" from="credits/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
 [connection signal="button_down" from="PlayerSelection/container/VBoxContainer/CreditsBack" to="." method="_on_credits_back_button_down"]
-[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
 [connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_tutorial_back_button_down"]
+[connection signal="button_down" from="tutorial/CreditsBack" to="." method="_on_credits_back_button_down"]
