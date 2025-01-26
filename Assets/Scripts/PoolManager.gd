@@ -13,7 +13,7 @@ signal GameEnded
 @export var bubble_prefabs : Array[PackedScene]
 @export var player_prefab : PackedScene
 @onready var play_timer : Timer = $PlayTimer
-@onready var scoreBoard : ScoreBoardManager = $ParTable
+@onready var scoreBoard : ScoreBoardManager = $GameUI/ParTable
 @export var caster_audios : Array[AudioStreamPlayer] = []
 
 var ball_moving : bool = false

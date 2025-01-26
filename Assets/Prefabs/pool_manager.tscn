@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cc8eguu0xw0fb"]
+[gd_scene load_steps=24 format=3 uid="uid://cc8eguu0xw0fb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/PoolManager.gd" id="1_dous0"]
 [ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="2_cijui"]
@@ -10,13 +10,14 @@
 [ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="5_y71oi"]
 [ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="6_riq1k"]
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="7_xxwn5"]
+[ext_resource type="PackedScene" uid="uid://b0kvj61ueo860" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="8_l4te8"]
 [ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="9_1acr6"]
-[ext_resource type="PackedScene" uid="uid://c70dalttwrls6" path="res://Assets/Prefabs/UI/par_table.tscn" id="11_l6g2o"]
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="12_anehg"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="13_mmf4f"]
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="14_10ftd"]
 [ext_resource type="AudioStream" uid="uid://c7151kuoyec41" path="res://Assets/Sound/SFX/Pool/clapping.ogg" id="17_dew7w"]
+[ext_resource type="Texture2D" uid="uid://7b1p8iv1n0nm" path="res://Assets/Sprites/Skyboxes/00304_Name_Preview_360_Panorama.jpg" id="18_587l2"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g6mtl"]
 streams_count = 6
@@ -29,13 +30,23 @@ stream_5/stream = ExtResource("9_1acr6")
 
 [sub_resource type="AudioStream" id="AudioStream_r7lr0"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4n7yn"]
+panorama = ExtResource("18_587l2")
+
+[sub_resource type="Sky" id="Sky_k2ulb"]
+sky_material = SubResource("PanoramaSkyMaterial_4n7yn")
+
+[sub_resource type="Environment" id="Environment_ej105"]
+background_mode = 2
+sky = SubResource("Sky_k2ulb")
+
 [node name="PoolManager" type="Node3D"]
 script = ExtResource("1_dous0")
 table_prefabs = Array[PackedScene]([ExtResource("2_cijui"), ExtResource("3_wa002"), ExtResource("12_anehg")])
 bubble_prefabs = Array[PackedScene]([ExtResource("2_xn61u"), ExtResource("3_1ajyc")])
 player_prefab = ExtResource("4_x7of8")
 
-[node name="ParTable" parent="." instance=ExtResource("11_l6g2o")]
+[node name="GameUI" parent="." instance=ExtResource("8_3yoj8")]
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera", "default_pos")]
 transform = Transform3D(0.136932, -0.508591, -0.85005, -0.987273, -1.6095e-08, -0.159037, 0.0808847, 0.861008, -0.502118, 13, 12, -15)
@@ -78,7 +89,12 @@ stream = SubResource("AudioStream_r7lr0")
 [node name="Caster3" type="AudioStreamPlayer" parent="Caster"]
 stream = SubResource("AudioStream_r7lr0")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ej105")
+
 [connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]
 [connection signal="finished" from="Caster/Caster1" to="." method="on_caster_said"]
 [connection signal="finished" from="Caster/Caster2" to="." method="on_caster_said"]
 [connection signal="finished" from="Caster/Caster3" to="." method="on_caster_said"]
+
+[editable path="GameUI"]

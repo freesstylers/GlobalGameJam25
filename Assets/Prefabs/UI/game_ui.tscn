@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0kvj61ueo860"]
+
+[ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_gbwi2"]
+[ext_resource type="PackedScene" uid="uid://c70dalttwrls6" path="res://Assets/Prefabs/UI/par_table.tscn" id="2_8p23u"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gbwi2")
+
+[node name="ParTable" parent="." instance=ExtResource("2_8p23u")]
+layout_mode = 1
+anchor_left = 0.177951
+anchor_top = 0.353395
+anchor_right = 0.822049
+anchor_bottom = 0.646605
+offset_top = -1.52588e-05
+
+[node name="P1_UI" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0260417
+anchor_top = 0.0462963
+anchor_right = 0.18316
+anchor_bottom = 0.108025
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="P1_UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "PLAYER 1 - "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SCORE" type="Label" parent="P1_UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+vertical_alignment = 1
+
+[node name="P2_UI" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81684
+anchor_top = 0.0462963
+anchor_right = 0.973958
+anchor_bottom = 0.108025
+grow_horizontal = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="P2_UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "PLAYER 2 - "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SCORE" type="Label" parent="P2_UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+vertical_alignment = 1
