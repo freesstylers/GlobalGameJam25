@@ -14,6 +14,7 @@ seed = 4
 noise = SubResource("FastNoiseLite_s0yu5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2200j"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_jpi3b")
 shader_parameter/bubble_color = Color(0.792157, 0.137255, 0.117647, 0.980392)
@@ -44,7 +45,7 @@ rings = 5
 [node name="BouncyBubble" type="Node3D" groups=["Bubbles"]]
 script = ExtResource("1_guc2f")
 numhits = 2
-hitColors = Array[Color]([Color(0.913725, 0.12549, 0.113725, 1), Color(0.613972, 0.0566443, 0.0532187, 0.690196)])
+hitColors = Array[Color]([Color(0.847059, 0.0588235, 0.0823529, 0.690196), Color(0.847059, 0.913725, 0.0823529, 0.690196)])
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
@@ -53,16 +54,18 @@ contact_monitor = true
 max_contacts_reported = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+visible = false
 shape = SubResource("SphereShape3D_00jjn")
 
 [node name="BubbleMesh" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("SphereMesh_1ymkk")
 
-[node name="DeathParticles" parent="RigidBody3D" instance=ExtResource("3_jh7st")]
-draw_pass_1 = SubResource("SphereMesh_2lbns")
-
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kx0hx")
+
+[node name="DeathParticles" parent="." instance=ExtResource("3_jh7st")]
+visible = false
+draw_pass_1 = SubResource("SphereMesh_2lbns")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

@@ -36,9 +36,10 @@ contact_monitor = true
 max_contacts_reported = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+visible = false
 shape = SubResource("SphereShape3D_7dpc3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="BubbleMesh" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_4xhsn")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

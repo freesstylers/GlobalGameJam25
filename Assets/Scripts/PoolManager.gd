@@ -28,6 +28,7 @@ var current_players : int = 0
 var alive_bubbles : int = 0
 var max_bubbles : int  = 0
 var num_turns : int = 0
+var num_restocks : int = 3
 
 var mesa_manager : MesaManager = null
 
@@ -82,9 +83,10 @@ func hit_bubble_multiplayer():
 	if alive_bubbles <= 0:
 		GameEnded.emit()
 		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
-	if alive_bubbles < max_bubbles * 0.5:
+	if alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
 		mesa_manager.spawn_num_bubbles(alive_bubbles)
 		max_bubbles = alive_bubbles
+		num_restocks -= 1
 
 func _on_play_timer_timeout() -> void:
 	scores_per_turn[player_turn].push_back(score_this_turn)
