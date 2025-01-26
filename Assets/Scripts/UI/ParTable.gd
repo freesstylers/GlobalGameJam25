@@ -32,7 +32,7 @@ func Fill(size : int, values : PackedInt32Array, total : int, hasP2 : bool, valu
 		$TableRowContainer.add_child(rowScoresP2)
 		pass
 	
-	AddCell(rowNums, "Level")
+	AddCell(rowNums, "Turn")
 	AddCell(rowScores, "Player 1" if hasP2 else "Score")
 	
 	if hasP2:

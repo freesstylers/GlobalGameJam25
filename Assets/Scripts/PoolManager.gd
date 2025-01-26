@@ -60,6 +60,7 @@ func _ready() -> void:
 func start_play(charge):
 	play_timer.wait_time = 10
 	play_timer.start()
+	score_this_turn = 0
 	if GameManager.num_players_in_game == 1:
 		num_turns += 1
 	
