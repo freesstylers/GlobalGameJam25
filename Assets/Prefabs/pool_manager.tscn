@@ -28,5 +28,6 @@ wait_time = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_g6mtl")
+volume_db = -5.19
 
 [connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]

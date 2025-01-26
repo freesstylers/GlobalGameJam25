@@ -18,6 +18,7 @@ func on_hit(body):
 		GameManager.PoolManager.HitBubble.emit()
 		queue_free()
 	else:
+		$Hit.play()
 		set_shader_color(hitColors[numhits - 1])
 
 func set_shader_color(color : Color):

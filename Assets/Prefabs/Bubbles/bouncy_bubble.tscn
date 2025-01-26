@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://u2amv3j63qg6"]
+[gd_scene load_steps=12 format=3 uid="uid://u2amv3j63qg6"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Bubbles/BouncyBubble.gd" id="1_guc2f"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="2_jpi3b"]
 [ext_resource type="PackedScene" uid="uid://cq24l24ktn2gq" path="res://Assets/Prefabs/Bubbles/death_particles.tscn" id="3_jh7st"]
+[ext_resource type="AudioStream" uid="uid://nyqk5ens5hyq" path="res://Assets/Sound/SFX/Bubble/wood.ogg" id="4_kx0hx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_00jjn"]
 
@@ -60,5 +61,8 @@ mesh = SubResource("SphereMesh_1ymkk")
 
 [node name="DeathParticles" parent="RigidBody3D" instance=ExtResource("3_jh7st")]
 draw_pass_1 = SubResource("SphereMesh_2lbns")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kx0hx")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

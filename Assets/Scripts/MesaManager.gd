@@ -2,6 +2,7 @@ class_name MesaManager
 extends Node3D
 
 @export var spawners : Array[Spawner]
+@export var player_spawners : Array[Node3D]
 
 func _ready() -> void:
 	GameManager.PoolManager.mesa_manager = self

@@ -20,9 +20,10 @@ size = Vector3(19, 5, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_4fsfq"]
 radius = 0.75
 
-[node name="MesaTriangular" type="Node3D" node_paths=PackedStringArray("spawners")]
+[node name="MesaTriangular" type="Node3D" node_paths=PackedStringArray("spawners", "player_spawners")]
 script = ExtResource("1_tyiih")
 spawners = [NodePath("Spawner"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5"), NodePath("Spawner6")]
+player_spawners = [NodePath("PlayerSpawner"), NodePath("PlayerSpawner2")]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 1000.0
@@ -53,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0791736, 3.25547, -2.54084
 shape = SubResource("BoxShape3D_tkft8")
 
 [node name="Spawner6" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 4)
 script = ExtResource("3_xsl7w")
 
 [node name="Area3D" type="Area3D" parent="Spawner6"]
@@ -109,3 +110,9 @@ shape = SubResource("SphereShape3D_4fsfq")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.364614, 0)
 texture = ExtResource("4_8ia25")
+
+[node name="PlayerSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.499407)
+
+[node name="PlayerSpawner2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.450035)
