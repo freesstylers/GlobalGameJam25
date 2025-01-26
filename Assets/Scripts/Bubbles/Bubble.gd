@@ -16,11 +16,20 @@ func _ready() -> void:
 	
 	#sistema de particulas para la explosion de la burbuja
 	particle_system = $DeathParticles as GPUParticles3D
+	particle_system.finished.connect(on_finish_particles)
 
-func set_shader_color(color : Color):
+func set_shader_color(color : Color, alpha : float):
 	bubbleShader.set_shader_parameter("bubble_color", Vector4(color.r, color.g, color.b, color.a))
+	bubbleShader.set_shader_parameter("alpha_bubble", alpha)
+	
+func set_shader_shake(height_multiplier : float, noise_sample_size : float):
+	bubbleShader.set_shader_parameter("height_multiplier", height_multiplier)
+	bubbleShader.set_shader_parameter("noise_sample_size", noise_sample_size)
 	
 func on_death() -> void:
-	#owner.add_child(particle_system)
-	#.add_sibling(particle_system)
+	$RigidBody3D.queue_free()
+	particle_system.position = $RigidBody3D.position
+	particle_system.emitting = true
+
+func on_finish_particles():
 	super.on_death()

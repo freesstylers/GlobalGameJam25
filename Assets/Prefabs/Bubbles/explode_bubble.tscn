@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c23s8kvrsh8w7"]
+[gd_scene load_steps=11 format=3 uid="uid://c23s8kvrsh8w7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Bubbles/ExplodeBubble.gd" id="1_2v8dh"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Bubble_Shader.gdshader" id="2_mug03"]
+[ext_resource type="PackedScene" uid="uid://cq24l24ktn2gq" path="res://Assets/Prefabs/Bubbles/death_particles.tscn" id="3_32ymm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dpc3"]
 
@@ -26,6 +27,18 @@ shader_parameter/noise = SubResource("NoiseTexture2D_i24ea")
 [sub_resource type="SphereMesh" id="SphereMesh_4xhsn"]
 material = SubResource("ShaderMaterial_0y61a")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuwpl"]
+transparency = 1
+albedo_color = Color(1, 0, 1, 0.67451)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c3n5t"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tuwpl")
+radius = 0.08
+height = 0.2
+radial_segments = 7
+rings = 7
+
 [node name="ExplodeBubble" type="Node3D"]
 script = ExtResource("1_2v8dh")
 
@@ -41,5 +54,9 @@ shape = SubResource("SphereShape3D_7dpc3")
 
 [node name="BubbleMesh" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_4xhsn")
+
+[node name="DeathParticles" parent="." instance=ExtResource("3_32ymm")]
+amount = 50
+draw_pass_1 = SubResource("SphereMesh_c3n5t")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

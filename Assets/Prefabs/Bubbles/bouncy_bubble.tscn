@@ -17,8 +17,8 @@ noise = SubResource("FastNoiseLite_s0yu5")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_jpi3b")
-shader_parameter/bubble_color = Color(0.792157, 0.137255, 0.117647, 0.980392)
-shader_parameter/alpha_bubble = -0.55
+shader_parameter/bubble_color = Color(0.792157, 0.137255, 0.117647, 0.619608)
+shader_parameter/alpha_bubble = -0.5
 shader_parameter/height_multiplier = 0.2
 shader_parameter/noise_sample_size = 0.04
 shader_parameter/animation_speed = 0.03
@@ -37,15 +37,18 @@ albedo_color = Color(0.613972, 0.0566443, 0.0532187, 0.690196)
 
 [sub_resource type="SphereMesh" id="SphereMesh_2lbns"]
 material = SubResource("StandardMaterial3D_la3d2")
-radius = 0.04
-height = 0.1
+radius = 0.08
+height = 0.2
 radial_segments = 5
 rings = 5
 
 [node name="BouncyBubble" type="Node3D" groups=["Bubbles"]]
 script = ExtResource("1_guc2f")
 numhits = 2
-hitColors = Array[Color]([Color(0.847059, 0.0588235, 0.0823529, 0.690196), Color(0.847059, 0.913725, 0.0823529, 0.690196)])
+hitColors = Array[Color]([Color(0.792157, 0.137255, 0.117647, 0.686275), Color(0.792157, 0.137255, 0.117647, 1)])
+alpha_colors = Array[float]([-0.7, -0.1])
+height_multiplier = 0.3
+noise_sample_size = 0.15
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 10.0
@@ -54,7 +57,6 @@ contact_monitor = true
 max_contacts_reported = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-visible = false
 shape = SubResource("SphereShape3D_00jjn")
 
 [node name="BubbleMesh" type="MeshInstance3D" parent="RigidBody3D"]
@@ -65,7 +67,7 @@ mesh = SubResource("SphereMesh_1ymkk")
 stream = ExtResource("4_kx0hx")
 
 [node name="DeathParticles" parent="." instance=ExtResource("3_jh7st")]
-visible = false
+amount = 35
 draw_pass_1 = SubResource("SphereMesh_2lbns")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

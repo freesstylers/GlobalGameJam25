@@ -1,8 +1,8 @@
 class_name ExplodeBubble
-extends BaseBall
+extends Bubble
 
 func on_hit(body):
 	var player : Player = body.owner as Player
 	player.apply_opposite_force()
 	GameManager.PoolManager.HitBubble.emit()
-	queue_free()
+	on_death()

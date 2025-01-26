@@ -3,12 +3,17 @@ extends Bubble
 
 @export var numhits : int = 1
 @export var hitColors : Array[Color] = [Color.AQUA]
+@export var alpha_colors : Array[float] = [-0.55]
+@export_range(0.0, 1.0) var height_multiplier : float = 0.2
+@export_range(0.0, 1.0) var noise_sample_size : float = 0.04
 
 
 func _ready() -> void:
 	super._ready()
 	numhits = randi_range(1,2)
-	set_shader_color(hitColors[numhits - 1])
+	set_shader_color(hitColors[numhits - 1], alpha_colors[numhits - 1])
+	if numhits == 1:
+		set_shader_shake(height_multiplier, noise_sample_size)
 	
 
 func on_hit(body):
@@ -16,11 +21,7 @@ func on_hit(body):
 	if numhits <= 0:
 		GameManager.PoolManager.HitBubble.emit()
 		on_death()
-		queue_free()
 	else:
 		$Hit.play()
-		set_shader_color(hitColors[numhits - 1])
-
-func set_shader_color(color : Color):
-	bubbleShader.set_shader_parameter("bubble_color", Vector4(color.r, color.g, color.b, color.a))
-	
+		set_shader_color(hitColors[numhits - 1], alpha_colors[numhits - 1])
+		set_shader_shake(height_multiplier, noise_sample_size)

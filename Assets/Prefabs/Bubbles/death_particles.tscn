@@ -1,6 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq24l24ktn2gq"]
-
-[ext_resource type="Script" path="res://Assets/Prefabs/Bubbles/death_particles.gd" id="1_bceid"]
+[gd_scene load_steps=6 format=3 uid="uid://cq24l24ktn2gq"]
 
 [sub_resource type="Curve" id="Curve_oxqmk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.962121, 0.362637), 0.0353792, 0.0, 0, 0]
@@ -37,10 +35,9 @@ rings = 4
 
 [node name="DeathParticles" type="GPUParticles3D"]
 emitting = false
-amount = 20
+amount = 10
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_o217d")
 draw_pass_1 = SubResource("SphereMesh_l8xvg")
-script = ExtResource("1_bceid")
