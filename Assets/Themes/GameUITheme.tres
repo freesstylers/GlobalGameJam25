@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://r36jadpqieh6"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://r36jadpqieh6"]
+
+[ext_resource type="FontFile" uid="uid://dggq2sok6nh0s" path="res://Assets/Fonts/bubblebutt.ttf" id="1_twrh1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s53q5"]
 bg_color = Color(0.278431, 0.278431, 0.278431, 1)
@@ -96,7 +98,7 @@ anti_aliasing = false
 
 [resource]
 Button/font_sizes/font_size = 24
-Button/fonts/font = null
+Button/fonts/font = ExtResource("1_twrh1")
 Button/styles/hover = SubResource("StyleBoxFlat_s53q5")
 Button/styles/normal = SubResource("StyleBoxFlat_qxj1j")
 Label/colors/font_color = Color(1, 1, 1, 1)
@@ -108,7 +110,7 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 45
-Label/fonts/font = null
+Label/fonts/font = ExtResource("1_twrh1")
 Label/styles/normal = SubResource("StyleBoxEmpty_8eilg")
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5

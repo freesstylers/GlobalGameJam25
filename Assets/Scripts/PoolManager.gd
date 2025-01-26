@@ -107,6 +107,16 @@ func _on_play_timer_timeout() -> void:
 	#REACTIONS	
 	caster_audios[clampi(score_this_turn,0,caster_audios.size()-1)].play()
 	
+	if score_this_turn == 0:
+		
+		pass
+	elif score_this_turn == 2:
+		
+		pass
+	elif score_this_turn > 2:
+		
+		pass
+	
 func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
 	total_scores[player_turn] += score_this_turn
