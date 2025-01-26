@@ -60,7 +60,6 @@ func _ready() -> void:
 	reset_game()
 		
 func start_play(charge):
-	play_timer.wait_time = 10
 	play_timer.start()
 	score_this_turn = 0
 	if GameManager.num_players_in_game == 1:
@@ -106,6 +105,7 @@ func hit_bubble():
 func _on_play_timer_timeout() -> void:
 	#REACTIONS	
 	caster_audios[clampi(score_this_turn,0,caster_audios.size()-1)].play()
+	StopBall.emit()
 	
 	if score_this_turn == 0:
 		
@@ -120,7 +120,6 @@ func _on_play_timer_timeout() -> void:
 func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
 	total_scores[player_turn] += score_this_turn
-	StopBall.emit()
 	
 	if alive_bubbles <= 0:
 		GameEnded.emit()

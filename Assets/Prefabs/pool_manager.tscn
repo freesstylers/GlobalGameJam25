@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="5_y71oi"]
 [ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="6_riq1k"]
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="7_xxwn5"]
-[ext_resource type="PackedScene" uid="uid://b0kvj61ueo860" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="8_l4te8"]
 [ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="9_1acr6"]
 [ext_resource type="Texture2D" uid="uid://ctmgnh0hs142m" path="res://Assets/Sprites/Skyboxes/53437764612_f7326c94a8_5k.jpg" id="9_mt5tn"]
@@ -43,7 +43,7 @@ sky_material = SubResource("PanoramaSkyMaterial_4n7yn")
 background_mode = 2
 sky = SubResource("Sky_k2ulb")
 
-[node name="PoolManager" type="Node3D" node_paths=PackedStringArray("caster_audios")]
+[node name="PoolManager2" type="Node3D" node_paths=PackedStringArray("caster_audios")]
 script = ExtResource("1_dous0")
 table_prefabs = Array[PackedScene]([ExtResource("2_cijui"), ExtResource("3_wa002"), ExtResource("12_anehg")])
 bubble_prefabs = Array[PackedScene]([ExtResource("2_xn61u"), ExtResource("3_1ajyc")])
@@ -72,7 +72,7 @@ spot_range = 29.152
 spot_angle = 61.875
 
 [node name="PlayTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

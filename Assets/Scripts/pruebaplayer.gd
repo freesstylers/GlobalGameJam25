@@ -66,10 +66,17 @@ func get_ball():
 	return rigidbody
 
 func stop_movement():
-	rigidbody.inertia = Vector3.ZERO
-	rigidbody.linear_velocity = Vector3.ZERO
-	rigidbody.angular_velocity = Vector3.ZERO
-	is_moving = false
+	var tween_time : float = 1.5
+	var local_tween = create_tween().set_parallel(true)
+	local_tween.tween_property(rigidbody, "inertia", Vector3.ZERO, tween_time)
+	local_tween.tween_property(rigidbody, "linear_velocity", Vector3.ZERO, tween_time)
+	local_tween.tween_property(rigidbody, "angular_velocity", Vector3.ZERO, tween_time)
+	local_tween.chain().tween_callback(func():
+		is_moving = false)
+	#rigidbody.inertia = Vector3.ZERO
+	#rigidbody.linear_velocity = Vector3.ZERO
+	#rigidbody.angular_velocity = Vector3.ZERO
+	#is_moving = false
 	
 func apply_opposite_force():
 	rigidbody.linear_velocity *= 10

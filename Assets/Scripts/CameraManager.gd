@@ -3,13 +3,15 @@ class_name CameraManager extends Node3D
 @export var camera : Camera3D = null
 @export var look_target : Node3D = null
 @export var default_pos : Node3D = null
+@export var lerp_factor: float = 3
+@export var following_player : bool = false
+@export var player_node : Node3D = null
 
 var path_speed: float = 0.05
-var lerp_factor: float = 3
-var following_player : bool = false
-var player_node : Node3D = null
 
 func _init():
+	if !GameManager.PoolManager:
+		return
 	GameManager.PoolManager.PlayerWillShoot.connect(show_table_from_the_top)
 	GameManager.PoolManager.PlayerStartTurn.connect(on_player_start_turn)
 

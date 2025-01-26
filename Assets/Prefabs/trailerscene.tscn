@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://kwv3ua1c4sjr"]
+
+[ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="2_wd0gd"]
+[ext_resource type="PackedScene" uid="uid://csd230kuta24i" path="res://Assets/Prefabs/Mesas/mesa_triangular.tscn" id="3_ajbj5"]
+[ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="4_rhd3r"]
+[ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="9_fnu6p"]
+[ext_resource type="Script" path="res://Assets/Scripts/TrailerPath3dContantFollow.gd" id="18_0i8uu"]
+
+[sub_resource type="Curve3D" id="Curve3D_wnn8h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 13, 11, 8.65, 12.3798, 0, 0.074131, -12.3798, 0, -0.074131, 0.072, 11, 21.03, 0, 0, 0, 0, 0, 0, -12.604, 11, 9.095, -11.7126, 0, 0.148262, 11.7126, 0, -0.148262, -0.15, 11, -2.766, 0, 0, 0, 0, 0, 0, 13, 11, 8.65),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="PoolManager" type="Node3D"]
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera", "look_target", "default_pos", "player_node")]
+transform = Transform3D(0.136932, -0.508591, -0.85005, -0.987273, -1.6095e-08, -0.159037, 0.0808847, 0.861008, -0.502118, 13, 12, -15)
+script = ExtResource("9_fnu6p")
+camera = NodePath(".")
+look_target = NodePath("../MesaTriangular")
+default_pos = NodePath("../TrailerPath/PathFollow3D/Node3D")
+lerp_factor = 10.0
+following_player = true
+player_node = NodePath("../TrailerPath/PathFollow3D/Node3D")
+
+[node name="TOP" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 17, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.487, 0)
+light_color = Color(1, 1, 0.823529, 1)
+light_energy = 20.0
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 29.152
+spot_angle = 61.875
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="MesaHexagonal" parent="." instance=ExtResource("4_rhd3r")]
+script = null
+
+[node name="MesaTriangular" parent="." instance=ExtResource("3_ajbj5")]
+visible = false
+script = null
+
+[node name="MesaObject" parent="." instance=ExtResource("2_wd0gd")]
+visible = false
+
+[node name="TrailerPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+curve = SubResource("Curve3D_wnn8h")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="TrailerPath"]
+transform = Transform3D(-0.691633, 0, 0.722249, 0, 1, 0, -0.722249, 0, -0.691633, 13, 11, 8.65)
+script = ExtResource("18_0i8uu")
+speed = 0.2
+
+[node name="Node3D" type="Node3D" parent="TrailerPath/PathFollow3D"]
+transform = Transform3D(0.469869, 0.732062, -0.493263, -0.0310383, 0.572144, 0.819565, 0.88219, -0.369779, 0.291555, 0, 0, 0)
