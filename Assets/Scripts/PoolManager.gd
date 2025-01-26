@@ -12,6 +12,7 @@ signal GameEnded
 @export var table_prefabs : Array[PackedScene]
 @export var bubble_prefabs : Array[PackedScene]
 @export var player_prefab : PackedScene
+@export var player2_prefab : PackedScene
 @onready var play_timer : Timer = $PlayTimer
 @onready var scoreBoard : ScoreBoardManager = $GameUI/ParTable
 @onready var SkillIssue = $GameUI/SkillIssue

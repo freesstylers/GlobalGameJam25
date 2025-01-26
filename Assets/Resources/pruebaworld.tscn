@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://jquukvuibrai"]
+[gd_scene load_steps=5 format=3 uid="uid://jquukvuibrai"]
 
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_vgxbj"]
 [ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="2_ywtqa"]
-[ext_resource type="PackedScene" uid="uid://dxs8u8ll3d0u1" path="res://Assets/Prefabs/Bubbles/pruebaball.tscn" id="3_d1wf6"]
-[ext_resource type="PackedScene" uid="uid://u2amv3j63qg6" path="res://Assets/Prefabs/Bubbles/bouncy_bubble.tscn" id="4_o8uqk"]
-[ext_resource type="PackedScene" uid="uid://c23s8kvrsh8w7" path="res://Assets/Prefabs/Bubbles/explode_bubble.tscn" id="5_ssarw"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="6_meba7"]
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="7_h5git"]
 
@@ -14,7 +11,6 @@
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="PoolManager" parent="." instance=ExtResource("2_ywtqa")]
-bubble_prefabs = Array[PackedScene]([ExtResource("3_d1wf6"), ExtResource("4_o8uqk"), ExtResource("5_ssarw")])
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera", "default_pos")]
 transform = Transform3D(0.136932, -0.508591, -0.85005, -0.987273, 5.01068e-08, -0.159037, 0.0808847, 0.861008, -0.502118, 13, 12, -15)

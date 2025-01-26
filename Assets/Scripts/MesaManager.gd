@@ -15,7 +15,12 @@ func spawn_bubbles():
 		
 func spawn_players():
 	for i in GameManager.num_players_in_game:
-		var newplayer = GameManager.PoolManager.player_prefab.instantiate() as Node3D
+		var newplayer
+		
+		if i % 2 == 0:
+			newplayer = GameManager.PoolManager.player_prefab.instantiate() as Node3D
+		else:
+			newplayer = GameManager.PoolManager.player2_prefab.instantiate() as Node3D
 		add_child(newplayer)
 		newplayer.global_position = player_spawners[i].global_position
 		
