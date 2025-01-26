@@ -67,6 +67,7 @@ func new_bubble():
 	alive_bubbles += 1
 	
 func hit_bubble():
+	score_this_turn += 1
 	if GameManager.num_players_in_game == 1:
 		hit_bubble_1player()
 	else:
@@ -77,6 +78,11 @@ func hit_bubble_1player():
 	alive_bubbles -= 1
 	if alive_bubbles <= 0:
 		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
+	else:
+		pass
+		#mesa_manager.spawn_num_bubbles(alive_bubbles)
+		#max_bubbles = alive_bubbles
+		#num_restocks -= 1
 	
 func hit_bubble_multiplayer():
 	alive_bubbles -= 1
