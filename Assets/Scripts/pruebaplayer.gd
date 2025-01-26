@@ -50,7 +50,7 @@ func _input(event):
 			var original_pos = stick_model.position
 			var local_tween = create_tween()
 			local_tween.tween_property(stick_model, "position:x", original_pos.x + displacement, 1.5).set_delay(0.5)
-			local_tween.tween_property(stick_model, "position:x", original_pos.x, 0.3)
+			local_tween.tween_property(stick_model, "position:x", original_pos.x, 0.3 - (charge_meter/3 * 0.2))
 			local_tween.tween_callback(func():
 				GameManager.PoolManager.HitBall.emit(charge_meter)
 				palo_hit_sound.play()
