@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c70dalttwrls6"]
+[gd_scene load_steps=5 format=3 uid="uid://c70dalttwrls6"]
 
 [ext_resource type="Theme" uid="uid://cgebjrglekedg" path="res://Assets/Themes/tabeTheme.tres" id="1_44exv"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI/ParTable.gd" id="1_k5m1n"]
 [ext_resource type="Theme" uid="uid://r36jadpqieh6" path="res://Assets/Themes/GameUITheme.tres" id="1_ufaco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h78ve"]
 
 [node name="ParTable" type="Panel"]
 anchors_preset = -1
@@ -13,6 +15,7 @@ anchor_bottom = 0.688272
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ufaco")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h78ve")
 script = ExtResource("1_k5m1n")
 metadata/_edit_use_anchors_ = true
 
