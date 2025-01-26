@@ -14,6 +14,9 @@ signal GameEnded
 @export var player_prefab : PackedScene
 @onready var play_timer : Timer = $PlayTimer
 @onready var scoreBoard : ScoreBoardManager = $GameUI/ParTable
+@onready var SkillIssue = $GameUI/SkillIssue
+@onready var NiceShot = $GameUI/NiceShot
+@onready var LetsGoooo = $GameUI/LetsGo
 @onready var skyboxObj : WorldEnvironment = $WorldEnvironment
 @export var caster_audios : Array[AudioStreamPlayer] = []
 @export var skyboxes : Array
@@ -116,17 +119,37 @@ func _on_play_timer_timeout() -> void:
 	StopBall.emit()
 	
 	if score_this_turn == 0:
+		SkillIssue.visible = true;
 		
+		var tween = create_tween()
+		tween.tween_property(SkillIssue, "position:y", 272, 0.2)
+		tween.tween_property(SkillIssue, "position:y", 670, 0.2)
 		pass
 	elif score_this_turn == 2:
-		
+		NiceShot.visible = true;
+		var tween = create_tween()
+		tween.tween_property(NiceShot, "position:y", 272, 0.2)
+		tween.tween_property(NiceShot, "position:y", 670, 0.2)
 		pass
 	elif score_this_turn > 2:
-		
+		LetsGoooo.visible = true;
+		var tween = create_tween()
+		tween.tween_property(LetsGoooo, "position:y", 272, 0.2)
+		tween.tween_property(LetsGoooo, "position:y", 670, 0.2)
 		pass
 	
 func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
+	
+	if score_this_turn == 0:
+		SkillIssue.visible = false;
+		pass
+	elif score_this_turn == 2:
+		NiceShot.visible = false;
+		pass
+	elif score_this_turn > 2:
+		LetsGoooo.visible = false;
+		pass
 	
 	if alive_bubbles <= 0:
 		GameEnded.emit()
