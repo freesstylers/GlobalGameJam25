@@ -18,14 +18,16 @@ signal GameEnded
 var ball_moving : bool = false
 
 var player_turn : int = 0
+var score_this_turn : int = 0
 var scores_per_turn : Array = []
+var total_scores : Array = []
 
 var max_players : int = 2
 var current_players : int = 0
 
 var alive_bubbles : int = 0
 var max_bubbles : int  = 0
-var num_shots : int = 0
+var num_turns : int = 0
 
 var mesa_manager : MesaManager = null
 
@@ -47,13 +49,18 @@ func _ready() -> void:
 	mesa_manager.spawn_players()
 	PlayerStartTurn.emit(player_turn)
 	max_bubbles = alive_bubbles
+	score_this_turn = 0
+	scores_per_turn.push_back([])
+	scores_per_turn.push_back([])
+	total_scores.push_back(0)
+	total_scores.push_back(0)
 	print("Max bubbles = ", max_bubbles)
 	
 func start_play(charge):
 	play_timer.wait_time = 10
 	play_timer.start()
 	if GameManager.num_players_in_game == 1:
-		num_shots += 1
+		num_turns += 1
 	
 func new_bubble():
 	alive_bubbles += 1
@@ -68,28 +75,26 @@ func hit_bubble():
 func hit_bubble_1player():
 	alive_bubbles -= 1
 	if alive_bubbles <= 0:
-		print("Tiros realizados: ", num_shots)
+		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
 	
 func hit_bubble_multiplayer():
 	alive_bubbles -= 1
 	if alive_bubbles <= 0:
 		GameEnded.emit()
-		scoreBoard.Fill((num_shots/2)+1, [],0, GameManager.num_players_in_game > 1, [],0)
+		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
 	if alive_bubbles < max_bubbles * 0.5:
 		mesa_manager.spawn_num_bubbles(alive_bubbles)
 		max_bubbles = alive_bubbles
 
 func _on_play_timer_timeout() -> void:
-	play_timer.stop()
+	scores_per_turn[player_turn].push_back(score_this_turn)
+	total_scores[player_turn] += score_this_turn
 	player_turn = (player_turn + 1) % GameManager.num_players_in_game
+	play_timer.stop()
 	PlayerStartTurn.emit(player_turn)
 	StopBall.emit()
-	#New score set
-	if player_turn == 0:
-		scores_per_turn.push_back([])
 	print("TURNO PLAYER ", player_turn + 1)
 	
 func reset_game():
 	player_turn = 0
 	scores_per_turn.clear()
-	
