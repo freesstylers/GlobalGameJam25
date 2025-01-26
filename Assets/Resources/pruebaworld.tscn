@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jquukvuibrai"]
+[gd_scene load_steps=8 format=3 uid="uid://jquukvuibrai"]
 
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_vgxbj"]
 [ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="2_ywtqa"]
@@ -7,17 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c23s8kvrsh8w7" path="res://Assets/Prefabs/Bubbles/explode_bubble.tscn" id="5_ssarw"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="6_meba7"]
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="7_h5git"]
-[ext_resource type="Texture2D" uid="uid://ctmgnh0hs142m" path="res://Assets/Sprites/Skyboxes/53437764612_f7326c94a8_5k.jpg" id="8_d1372"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0j10d"]
-panorama = ExtResource("8_d1372")
-
-[sub_resource type="Sky" id="Sky_gawq7"]
-sky_material = SubResource("PanoramaSkyMaterial_0j10d")
-
-[sub_resource type="Environment" id="Environment_uoiuq"]
-background_mode = 2
-sky = SubResource("Sky_gawq7")
 
 [node name="HEXPOOL" type="Node3D"]
 
@@ -49,6 +38,3 @@ transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 
 stream = ExtResource("7_h5git")
 volume_db = -10.306
 autoplay = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_uoiuq")

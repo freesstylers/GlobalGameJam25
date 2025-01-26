@@ -14,7 +14,9 @@ signal GameEnded
 @export var player_prefab : PackedScene
 @onready var play_timer : Timer = $PlayTimer
 @onready var scoreBoard : ScoreBoardManager = $GameUI/ParTable
+@onready var skyboxObj : WorldEnvironment = $WorldEnvironment
 @export var caster_audios : Array[AudioStreamPlayer] = []
+@export var skyboxes : Array
 
 var ball_moving : bool = false
 
@@ -43,6 +45,10 @@ func _exit_tree() -> void:
 	GameManager.PoolManager = null
 
 func _ready() -> void:
+	
+	var i = randi() % skyboxes.size()
+	skyboxObj.environment.sky.sky_material.panorama = skyboxes[i]
+	
 	scoreBoard.Fade(0,0) #Hide the scoreboard
 	mesa_manager = table_prefabs[randi()%table_prefabs.size()].instantiate()
 	add_child(mesa_manager)

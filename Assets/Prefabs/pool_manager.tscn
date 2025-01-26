@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc8eguu0xw0fb"]
+[gd_scene load_steps=28 format=3 uid="uid://cc8eguu0xw0fb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/PoolManager.gd" id="1_dous0"]
 [ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="2_cijui"]
@@ -13,7 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://b0kvj61ueo860" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="8_l4te8"]
 [ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="9_1acr6"]
+[ext_resource type="Texture2D" uid="uid://ctmgnh0hs142m" path="res://Assets/Sprites/Skyboxes/53437764612_f7326c94a8_5k.jpg" id="9_mt5tn"]
+[ext_resource type="Texture2D" uid="uid://bblikpe520su5" path="res://Assets/Sprites/Skyboxes/An-Pucan-Pub-Back-Bar-Galway-Panorama.jpg" id="10_ylhji"]
+[ext_resource type="Texture2D" uid="uid://dwt488q6ky5id" path="res://Assets/Sprites/Skyboxes/An-Pucan-Pub-Bar-Galway-Panorama-1138x547.jpg" id="11_ai005"]
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="12_anehg"]
+[ext_resource type="Texture2D" uid="uid://duejc0qa0fxkg" path="res://Assets/Sprites/Skyboxes/ContactSheetHDRICow.jpg" id="12_uyt02"]
+[ext_resource type="Texture2D" uid="uid://cxamk45oohixr" path="res://Assets/Sprites/Skyboxes/Hilo_360_Entrance_Inside_3-CC.jpg" id="13_2bscs"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="13_mmf4f"]
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="14_10ftd"]
 [ext_resource type="AudioStream" uid="uid://c7151kuoyec41" path="res://Assets/Sound/SFX/Pool/clapping.ogg" id="17_dew7w"]
@@ -44,6 +49,7 @@ table_prefabs = Array[PackedScene]([ExtResource("2_cijui"), ExtResource("3_wa002
 bubble_prefabs = Array[PackedScene]([ExtResource("2_xn61u"), ExtResource("3_1ajyc")])
 player_prefab = ExtResource("4_x7of8")
 caster_audios = [NodePath("Caster/Caster0"), NodePath("Caster/Caster1"), NodePath("Caster/Caster2"), NodePath("Caster/Caster3")]
+skyboxes = [ExtResource("18_587l2"), ExtResource("9_mt5tn"), ExtResource("10_ylhji"), ExtResource("11_ai005"), ExtResource("12_uyt02"), ExtResource("13_2bscs")]
 
 [node name="GameUI" parent="." instance=ExtResource("8_3yoj8")]
 
