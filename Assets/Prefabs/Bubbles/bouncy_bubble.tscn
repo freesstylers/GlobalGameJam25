@@ -37,8 +37,8 @@ albedo_color = Color(0.613972, 0.0566443, 0.0532187, 0.690196)
 material = SubResource("StandardMaterial3D_la3d2")
 radius = 0.04
 height = 0.1
-radial_segments = 7
-rings = 7
+radial_segments = 5
+rings = 5
 
 [node name="BouncyBubble" type="Node3D" groups=["Bubbles"]]
 script = ExtResource("1_guc2f")

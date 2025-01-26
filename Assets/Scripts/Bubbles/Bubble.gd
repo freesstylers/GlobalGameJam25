@@ -22,5 +22,6 @@ func set_shader_color(color : Color):
 	
 func on_death() -> void:
 	super.on_death()
-	particle_system.restart()
+	#owner.add_child(particle_system)
+	#.add_sibling(particle_system)
 	pass

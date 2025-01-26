@@ -9,6 +9,7 @@ func _on_rigid_body_3d_body_entered(body):
 		on_hit(body)
 
 func on_hit(body):
+	on_death()
 	GameManager.PoolManager.HitBubble.emit()
 	queue_free()
 
