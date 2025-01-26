@@ -43,11 +43,12 @@ sky_material = SubResource("PanoramaSkyMaterial_4n7yn")
 background_mode = 2
 sky = SubResource("Sky_k2ulb")
 
-[node name="PoolManager2" type="Node3D"]
+[node name="PoolManager2" type="Node3D" node_paths=PackedStringArray("caster_audios")]
 script = ExtResource("1_dous0")
 table_prefabs = Array[PackedScene]([ExtResource("2_cijui"), ExtResource("3_wa002"), ExtResource("12_anehg")])
 bubble_prefabs = Array[PackedScene]([ExtResource("2_xn61u"), ExtResource("3_1ajyc")])
 player_prefab = ExtResource("4_x7of8")
+caster_audios = [NodePath("Caster/Caster0"), NodePath("Caster/Caster1"), NodePath("Caster/Caster2"), NodePath("Caster/Caster3")]
 skyboxes = [ExtResource("18_587l2"), ExtResource("9_mt5tn"), ExtResource("10_ylhji"), ExtResource("11_ai005"), ExtResource("12_uyt02"), ExtResource("13_2bscs")]
 
 [node name="GameUI" parent="." instance=ExtResource("8_3yoj8")]
