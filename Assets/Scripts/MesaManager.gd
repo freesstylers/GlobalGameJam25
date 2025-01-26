@@ -4,8 +4,8 @@ extends Node3D
 @export var spawners : Array[Spawner]
 @export var player_spawners : Array[Node3D]
 
-func _ready() -> void:
-	GameManager.PoolManager.mesa_manager = self
+#func _ready() -> void:
+	#GameManager.PoolManager.mesa_manager = self
 
 func spawn_bubbles():
 	for i in spawners.size():
@@ -14,7 +14,7 @@ func spawn_bubbles():
 		newbubble.global_position = spawners[i].global_position
 		
 func spawn_players():
-	for i in GameManager.PoolManager.num_players:
+	for i in GameManager.num_players_in_game:
 		var newplayer = GameManager.PoolManager.player_prefab.instantiate() as Node3D
 		add_child(newplayer)
 		newplayer.global_position = player_spawners[i].global_position

@@ -24,6 +24,7 @@ func _ready() -> void:
 	player_id = GameManager.PoolManager.current_players
 	GameManager.players.push_back(self)
 	GameManager.PoolManager.current_players += 1
+	GameManager.PoolManager.scores_per_turn.push_back([])
 	
 func _process(delta: float) -> void:
 	if charging:

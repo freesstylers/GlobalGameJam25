@@ -7,6 +7,7 @@ var last_input_used : INPUT_TYPE = INPUT_TYPE.KEYBOARD
 ###########END_SIGNALS
 
 ###########VARIABLES
+var num_players_in_game : int = 1
 var players : Array[Player] = []
 var current_player = null
 var SceneManager : SceneManagement = null

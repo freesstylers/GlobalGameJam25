@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://drfqwlguujga"]
+[gd_scene load_steps=9 format=3 uid="uid://drfqwlguujga"]
 
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="1_uj53o"]
 [ext_resource type="Script" path="res://Assets/Scripts/CameraManager.gd" id="4_kngja"]
 [ext_resource type="PackedScene" uid="uid://dxs8u8ll3d0u1" path="res://Assets/Prefabs/Bubbles/pruebaball.tscn" id="4_yvoml"]
+[ext_resource type="PackedScene" uid="uid://c70dalttwrls6" path="res://Assets/Prefabs/UI/par_table.tscn" id="5_2ihfc"]
 [ext_resource type="PackedScene" uid="uid://cc8eguu0xw0fb" path="res://Assets/Prefabs/pool_manager.tscn" id="5_8m4cp"]
 [ext_resource type="PackedScene" uid="uid://u2amv3j63qg6" path="res://Assets/Prefabs/Bubbles/bouncy_bubble.tscn" id="5_wo6on"]
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="5_x35km"]
@@ -10,19 +11,25 @@
 
 [node name="HEXPOOL" type="Node3D"]
 
-[node name="MesaHexagonal" parent="." instance=ExtResource("1_uj53o")]
+[node name="PoolManager" parent="." node_paths=PackedStringArray("scoreBoard") instance=ExtResource("5_8m4cp")]
+bubble_prefabs = Array[PackedScene]([ExtResource("4_yvoml"), ExtResource("5_wo6on"), ExtResource("6_6df2g")])
+scoreBoard = NodePath("ParTable")
+
+[node name="ParTable2" parent="PoolManager" instance=ExtResource("5_2ihfc")]
+
+[node name="MesaHexagonal2" parent="PoolManager" instance=ExtResource("1_uj53o")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
-[node name="PoolManager" parent="." instance=ExtResource("5_8m4cp")]
-bubble_prefabs = Array[PackedScene]([ExtResource("4_yvoml"), ExtResource("5_wo6on"), ExtResource("6_6df2g")])
-
-[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera", "default_pos")]
-transform = Transform3D(0.136932, -0.508591, -0.85005, -0.987273, 5.01068e-08, -0.159037, 0.0808847, 0.861008, -0.502118, 13, 12, -15)
+[node name="Camera2" type="Camera3D" parent="PoolManager" node_paths=PackedStringArray("camera", "default_pos")]
+transform = Transform3D(0.136932, -0.508591, -0.85005, -0.987273, -1.6095e-08, -0.159037, 0.0808847, 0.861008, -0.502118, 13, 12, -15)
 script = ExtResource("4_kngja")
 camera = NodePath(".")
 default_pos = NodePath("../TOP")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="TOP2" type="Node3D" parent="PoolManager"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 17, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="PoolManager"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.487, 0)
 light_color = Color(1, 1, 0.823529, 1)
 light_energy = 20.0
@@ -31,10 +38,7 @@ shadow_enabled = true
 spot_range = 29.152
 spot_angle = 61.875
 
-[node name="TOP" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 17, 0)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PoolManager"]
 stream = ExtResource("5_x35km")
 volume_db = -10.306
 autoplay = true

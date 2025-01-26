@@ -1,4 +1,4 @@
-extends Node
+class_name ScoreBoardManager extends Control
 
 @onready var TableRow = preload("res://Assets/Prefabs/UI/table_row.tscn")
 @onready var TableCell = preload("res://Assets/Prefabs/UI/table_cell.tscn")
@@ -7,16 +7,20 @@ extends Node
 #@export var testValues : PackedInt32Array
 #@export var testValuesP2 : PackedInt32Array
 
-func _ready() -> void:
-	#Fill(testHoles, testValues, 87, false, testValuesP2, 76)
-	pass
+#func _ready() -> void:
+	#GameManager.ScoreBoard = self
+	#modulate.a = 0
+	#Fill(testHoles, testValues, 87, true, testValuesP2, 76)
+
+func Fade(target_alpha : float , fade_length : float):
+	var local_tween = create_tween()
+	local_tween.tween_property(self, "modulate:a", target_alpha, fade_length)
 
 func FillP1(size : int, values : PackedInt32Array, total : int):
 	Fill(size, values, total, false, [], 0)
 
 func Fill(size : int, values : PackedInt32Array, total : int, hasP2 : bool, valuesP2 : PackedInt32Array, totalP2 : int):
-	
-	
+	Fade(1, 1)
 	var rowNums = TableRow.instantiate()
 	$TableRowContainer.add_child(rowNums)
 	var rowScores = TableRow.instantiate()
