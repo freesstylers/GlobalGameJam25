@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dv31ttuyw5rnf"]
+[gd_scene load_steps=17 format=3 uid="uid://dv31ttuyw5rnf"]
 
 [ext_resource type="Theme" uid="uid://ccsfly34nw0wv" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hmyp4"]
 [ext_resource type="Script" path="res://Assets/Scripts/MainMenuScript.gd" id="2_12wsh"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://drbe1j77opppx" path="res://Assets/Sprites/GGJ_Logo.png" id="6_apn8y"]
 [ext_resource type="Texture2D" uid="uid://bwyll6qtvjtdt" path="res://Assets/Sprites/Bluesky.png" id="6_sgjl6"]
 [ext_resource type="Texture2D" uid="uid://drw3jni7sf11v" path="res://Assets/UI/InputPrompts/gamepad icon.png" id="8_8wogb"]
-[ext_resource type="FontFile" uid="uid://bnu0s2kb4sfvc" path="res://Assets/Fonts/Larceny.ttf" id="9_spall"]
 [ext_resource type="Texture2D" uid="uid://ccolws14a0y7q" path="res://Assets/UI/InputPrompts/keyboard icon.png" id="9_v12d2"]
 [ext_resource type="Texture2D" uid="uid://bd1h7vcu8vaye" path="res://Assets/UI/InputPrompts/tile_0416.png" id="10_ce6xn"]
 [ext_resource type="Texture2D" uid="uid://vq52h5wcccj2" path="res://Assets/UI/InputPrompts/tile_0312.png" id="11_olrp2"]
@@ -143,20 +142,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="play" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="tutorial" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 40
 text = "Tutorial
 "
 
 [node name="Credits" type="Button" parent="MainButtonContainer/MainButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 40
 text = "Credits"
 
@@ -164,10 +160,10 @@ text = "Credits"
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.177778
-anchor_top = 0.234722
-anchor_right = 0.822222
-anchor_bottom = 0.766667
+anchor_left = 0.177951
+anchor_top = 0.128086
+anchor_right = 0.822049
+anchor_bottom = 0.873457
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -188,7 +184,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="credits/container/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 32
 text = "CREDITS
 --------
@@ -204,7 +199,6 @@ uppercase = true
 
 [node name="CreditsBack" type="Button" parent="credits/container/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
@@ -212,10 +206,10 @@ text = "Close"
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.177778
-anchor_top = 0.234722
-anchor_right = 0.822222
-anchor_bottom = 0.766667
+anchor_left = 0.177951
+anchor_top = 0.131173
+anchor_right = 0.822049
+anchor_bottom = 0.87037
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -236,7 +230,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="PlayerSelection/container/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 32
 text = "CREDITS
 --------
@@ -252,7 +245,6 @@ uppercase = true
 
 [node name="CreditsBack" type="Button" parent="PlayerSelection/container/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_spall")
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
@@ -284,10 +276,10 @@ vertical_alignment = 1
 [node name="ColorRect" type="ColorRect" parent="tutorial"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.296748
-anchor_top = 0.00922509
-anchor_right = 0.703252
-anchor_bottom = 0.126384
+anchor_left = 0.310524
+anchor_top = 0.0091112
+anchor_right = 0.694444
+anchor_bottom = 0.125735
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.137255, 0.137255, 0.137255, 1)
@@ -311,10 +303,10 @@ uppercase = true
 [node name="HSeparator" type="VSeparator" parent="tutorial"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.366757
-anchor_top = 0.130996
-anchor_right = 0.633243
-anchor_bottom = 0.869004
+anchor_left = 0.478771
+anchor_top = 0.162179
+anchor_right = 0.483288
+anchor_bottom = 0.83823
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -324,9 +316,9 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="tutorial"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0722674
+anchor_left = 0.0609756
 anchor_top = 0.180402
-anchor_right = 0.956414
+anchor_right = 0.990289
 anchor_bottom = 0.814541
 grow_horizontal = 2
 grow_vertical = 2
@@ -364,11 +356,12 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="tutorial/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 45
 alignment = 1
 
 [node name="Label" type="Label" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 3
 text = "Move Cue Tip"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -376,7 +369,7 @@ uppercase = true
 
 [node name="Label2" type="Label" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 3
 text = "Strike (hold!)"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -385,6 +378,7 @@ uppercase = true
 [node name="VBoxContainer2" type="VBoxContainer" parent="tutorial/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 70
 alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer2"]
@@ -402,11 +396,12 @@ stretch_mode = 3
 [node name="VBoxContainer3" type="VBoxContainer" parent="tutorial/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 45
 alignment = 1
 
 [node name="Label" type="Label" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer3"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 3
 text = "Move Cue Tip"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -414,7 +409,7 @@ uppercase = true
 
 [node name="Label2" type="Label" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer3"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 3
 text = "Strike (hold!)"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -423,7 +418,8 @@ uppercase = true
 [node name="VBoxContainer4" type="VBoxContainer" parent="tutorial/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
+theme_override_constants/separation = 25
+alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer4"]
 layout_mode = 2
@@ -433,12 +429,14 @@ alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer4/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("12_p3p3s")
 expand_mode = 2
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer4/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 56
 text = "/"
@@ -447,12 +445,14 @@ vertical_alignment = 1
 
 [node name="TextureRect3" type="TextureRect" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer4/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("13_v0bkh")
 expand_mode = 2
 stretch_mode = 3
 
 [node name="TextureRect3" type="TextureRect" parent="tutorial/VBoxContainer/HBoxContainer2/VBoxContainer4"]
 layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("14_hqueg")
 expand_mode = 2
 stretch_mode = 3
