@@ -37,13 +37,18 @@ func _on_tutorial_back_button_down():
 #########################################################
 
 func FreeStylers():
-	get_tree().root.get_node("SceneManager/ButtonSFX").play()
+	GameManager.playButtonSFX()
 	OS.shell_open("https://freestylers-studio.itch.io/")
 
 func Jam():
-	get_tree().root.get_node("SceneManager/ButtonSFX").play()
+	GameManager.playButtonSFX()
 	OS.shell_open("https://globalgamejam.org/")
 	
 func Twitter():
-	get_tree().root.get_node("SceneManager/ButtonSFX").play()
+	GameManager.playButtonSFX()
 	OS.shell_open("https://twitter.com/FreeStylers_Dev")
+
+
+func BlueSky() -> void:
+	GameManager.playButtonSFX()
+	OS.shell_open("https://bsky.app/profile/freestylersstudio.bsky.social")
