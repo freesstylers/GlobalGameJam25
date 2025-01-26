@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4dp2xbmy82nm"]
+[gd_scene load_steps=22 format=3 uid="uid://c4dp2xbmy82nm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pruebaplayer.gd" id="1_bbtes"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI/BallUICounterRotation.gd" id="2_10bla"]
@@ -75,6 +75,38 @@ material = SubResource("StandardMaterial3D_5cn2d")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhihy"]
 
+[sub_resource type="Curve" id="Curve_b2vhy"]
+_data = [Vector2(0, 0.494505), 0.0, -1.35165, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_32g0n"]
+curve = SubResource("Curve_b2vhy")
+
+[sub_resource type="Curve" id="Curve_6b736"]
+_data = [Vector2(0, 0.494505), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gouud"]
+curve = SubResource("Curve_6b736")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gde5j"]
+lifetime_randomness = 0.2
+velocity_pivot = Vector3(1, 0, 0)
+direction = Vector3(0.1, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_gouud")
+alpha_curve = SubResource("CurveTexture_32g0n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4omh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hr3ja"]
+material = SubResource("StandardMaterial3D_d4omh")
+radial_segments = 7
+rings = 7
+
 [node name="Player" type="Node3D" node_paths=PackedStringArray("forceBar")]
 script = ExtResource("1_bbtes")
 forceBar = NodePath("BarraPivot")
@@ -128,6 +160,18 @@ mesh = SubResource("SphereMesh_bmnwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_mhihy")
+
+[node name="RotParticulas" type="Node3D" parent="RigidBody3D"]
+
+[node name="HitParticles" type="GPUParticles3D" parent="RigidBody3D/RotParticulas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.57356e-28, 1, 0.514925, 0.227076, 0)
+emitting = false
+amount = 20
+lifetime = 0.2
+one_shot = true
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_gde5j")
+draw_pass_1 = SubResource("SphereMesh_hr3ja")
 
 [node name="PaloHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_snmkd")
