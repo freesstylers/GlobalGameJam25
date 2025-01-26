@@ -15,7 +15,7 @@ func _ready() -> void:
 	force_load_scene(GAME_SCENE.SPLASH_SCENE)
 	
 func change_to_scene(nextScene : GAME_SCENE):
-	if isLoadingScene or currentSceneEnum == nextScene:
+	if isLoadingScene:#or currentSceneEnum == nextScene:
 		return
 		
 	isLoadingScene = true

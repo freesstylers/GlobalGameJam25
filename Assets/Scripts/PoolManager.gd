@@ -45,6 +45,7 @@ func _init() -> void:
 	NewBubble.connect(new_bubble)
 	HitBall.connect(start_play)
 	HitBubble.connect(hit_bubble)
+	pass
 	
 func _exit_tree() -> void:
 	GameManager.PoolManager = null
@@ -55,6 +56,7 @@ func _ready() -> void:
 	on_start_game()
 
 func on_start_game():
+	scoreBoard.visible = false
 	GameManager.players.clear()
 	
 	scoreBoard.Fade(0,0) #Hide the scoreboard
@@ -103,6 +105,7 @@ func hit_bubble():
 		StopBall.emit()
 
 		GameEnded.emit()
+		scoreBoard.visible = true
 		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
 		return
 
@@ -146,7 +149,7 @@ func on_caster_said():
 	
 	if alive_bubbles <= 0:
 		GameEnded.emit()
-		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
+		#scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
 		return
 	if GameManager.num_players_in_game > 1 and alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
 		mesa_manager.spawn_num_bubbles(alive_bubbles)

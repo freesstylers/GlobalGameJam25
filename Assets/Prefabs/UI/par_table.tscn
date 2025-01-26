@@ -27,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_44exv")
+theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -41,6 +42,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="AnotherGame" type="Button" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Another Game!"

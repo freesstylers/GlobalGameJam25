@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="7_xxwn5"]
 [ext_resource type="PackedScene" uid="uid://b0kvj61ueo860" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="8_l4te8"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/pruebaplayer2.tscn" id="9_0hylj"]
+[ext_resource type="PackedScene" uid="uid://c4dp2xbmy82nm" path="res://Assets/Prefabs/pruebaplayer2.tscn" id="9_0hylj"]
 [ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="9_1acr6"]
 [ext_resource type="Texture2D" uid="uid://ctmgnh0hs142m" path="res://Assets/Sprites/Skyboxes/53437764612_f7326c94a8_5k.jpg" id="9_mt5tn"]
 [ext_resource type="Texture2D" uid="uid://bblikpe520su5" path="res://Assets/Sprites/Skyboxes/An-Pucan-Pub-Back-Bar-Galway-Panorama.jpg" id="10_ylhji"]
