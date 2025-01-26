@@ -26,6 +26,7 @@ var current_players : int = 0
 var alive_bubbles : int = 0
 var max_bubbles : int  = 0
 var num_shots : int = 0
+var num_restocks : int = 3
 
 var mesa_manager : MesaManager = null
 
@@ -75,9 +76,10 @@ func hit_bubble_multiplayer():
 	if alive_bubbles <= 0:
 		GameEnded.emit()
 		scoreBoard.Fill((num_shots/2)+1, [],0, GameManager.num_players_in_game > 1, [],0)
-	if alive_bubbles < max_bubbles * 0.5:
+	if alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
 		mesa_manager.spawn_num_bubbles(alive_bubbles)
 		max_bubbles = alive_bubbles
+		num_restocks -= 1
 
 func _on_play_timer_timeout() -> void:
 	play_timer.stop()
