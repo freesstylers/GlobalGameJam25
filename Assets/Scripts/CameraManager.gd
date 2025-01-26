@@ -14,6 +14,7 @@ func _init():
 		return
 	GameManager.PoolManager.PlayerWillShoot.connect(show_table_from_the_top)
 	GameManager.PoolManager.PlayerStartTurn.connect(on_player_start_turn)
+	GameManager.PoolManager.GameEnded.connect(on_game_ended)
 
 func _process(delta):
 	move_camera(delta)
@@ -21,7 +22,7 @@ func _process(delta):
 func move_camera(delta):
 	var target_to_move_towards : Node3D = null
 	#PLAYER CONTROL
-	if following_player:
+	if following_player and player_node:
 		target_to_move_towards = player_node
 		camera.global_position = camera.global_position.lerp(target_to_move_towards.global_position, lerp_factor * delta)
 		
@@ -63,3 +64,8 @@ func on_player_start_turn(player_id):
 	following_player = true
 	look_target = GameManager.players[player_id].get_ball()
 	player_node = GameManager.players[player_id].get_stick()
+
+func on_game_ended():
+	following_player = false
+	player_node = null
+	

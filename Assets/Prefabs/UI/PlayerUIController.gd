@@ -2,6 +2,7 @@ class_name Player_UI_Controller extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.PoolManager.GameStart.connect(updateUI)
 	pass
 	#PoolManagement.HitBubble.connect(updateUI())
 

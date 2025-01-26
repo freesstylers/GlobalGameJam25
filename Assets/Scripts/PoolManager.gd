@@ -1,6 +1,7 @@
 class_name PoolManagement
 extends Node
 
+signal GameStart
 signal PlayerStartTurn(num)
 signal PlayerWillShoot()
 signal HitBall(charge)
@@ -54,6 +55,8 @@ func _ready() -> void:
 	on_start_game()
 
 func on_start_game():
+	GameManager.players.clear()
+	
 	scoreBoard.Fade(0,0) #Hide the scoreboard
 	if mesa_manager:
 		mesa_manager.queue_free()
@@ -102,21 +105,6 @@ func hit_bubble():
 		GameEnded.emit()
 		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
 		return
-	
-#func hit_bubble_1player():
-	#if alive_bubbles <= 0:
-		#scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
-	#else:
-		#pass
-	#
-#func hit_bubble_multiplayer():
-	#if alive_bubbles <= 0:
-		#GameEnded.emit()
-		#scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
-	#if alive_bubbles < max_bubbles * 0.5 and num_restocks > 0:
-		#mesa_manager.spawn_num_bubbles(alive_bubbles)
-		#max_bubbles = alive_bubbles
-		#num_restocks -= 1
 
 func _on_play_timer_timeout() -> void:
 	#REACTIONS	
@@ -177,3 +165,4 @@ func reset_game():
 	total_scores.clear()
 	total_scores.push_back(0)
 	total_scores.push_back(0)
+	GameStart.emit()
