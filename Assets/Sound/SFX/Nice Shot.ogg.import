@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj8xyu5hiesne"
+path="res://.godot/imported/Nice Shot.ogg-a6a8ce327cccf03d4cd41283624efe1e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound/SFX/Nice Shot.ogg"
+dest_files=["res://.godot/imported/Nice Shot.ogg-a6a8ce327cccf03d4cd41283624efe1e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cc8eguu0xw0fb"]
+[gd_scene load_steps=31 format=3 uid="uid://cc8eguu0xw0fb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/PoolManager.gd" id="1_dous0"]
 [ext_resource type="PackedScene" uid="uid://dr48j6dww38vt" path="res://Assets/Prefabs/pruebamesa.tscn" id="2_cijui"]
@@ -23,6 +23,9 @@
 [ext_resource type="AudioStream" uid="uid://bk1rgjxruq08h" path="res://Assets/Sound/Music/ambience.wav" id="14_10ftd"]
 [ext_resource type="AudioStream" uid="uid://c7151kuoyec41" path="res://Assets/Sound/SFX/Pool/clapping.ogg" id="17_dew7w"]
 [ext_resource type="Texture2D" uid="uid://7b1p8iv1n0nm" path="res://Assets/Sprites/Skyboxes/00304_Name_Preview_360_Panorama.jpg" id="18_587l2"]
+[ext_resource type="AudioStream" uid="uid://djg5wj1bufont" path="res://Assets/Sound/SFX/Skill issue 1.ogg" id="23_ab10t"]
+[ext_resource type="AudioStream" uid="uid://cj8xyu5hiesne" path="res://Assets/Sound/SFX/Nice Shot.ogg" id="25_rsvv3"]
+[ext_resource type="AudioStream" uid="uid://ew8ehijoknml" path="res://Assets/Sound/SFX/Lets go.ogg" id="26_m5jbr"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g6mtl"]
 streams_count = 6
@@ -87,16 +90,16 @@ autoplay = true
 [node name="Caster" type="Node" parent="."]
 
 [node name="Caster0" type="AudioStreamPlayer" parent="Caster"]
-stream = ExtResource("17_dew7w")
+stream = ExtResource("23_ab10t")
 
 [node name="Caster1" type="AudioStreamPlayer" parent="Caster"]
 stream = ExtResource("17_dew7w")
 
 [node name="Caster2" type="AudioStreamPlayer" parent="Caster"]
-stream = ExtResource("17_dew7w")
+stream = ExtResource("25_rsvv3")
 
 [node name="Caster3" type="AudioStreamPlayer" parent="Caster"]
-stream = ExtResource("17_dew7w")
+stream = ExtResource("26_m5jbr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ej105")

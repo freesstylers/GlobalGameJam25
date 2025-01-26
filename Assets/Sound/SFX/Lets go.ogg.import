@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ew8ehijoknml"
+path="res://.godot/imported/Lets go.ogg-0e9002aae7514214b0e92853c4d2e42c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound/SFX/Lets go.ogg"
+dest_files=["res://.godot/imported/Lets go.ogg-0e9002aae7514214b0e92853c4d2e42c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
