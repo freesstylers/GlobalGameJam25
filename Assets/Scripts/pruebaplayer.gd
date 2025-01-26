@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 func _input(event):
 	if not is_moving and is_my_turn:
 		#ROTATION
-		var input_vector = Input.get_vector("down", "up", "right", "left")
+		var input_vector = Input.get_vector("left", "right", "right", "left")
 		stick.rotate_y(input_vector.x * 0.05)
 		#SHOT
 		if Input.is_action_pressed("Accelerate"):
