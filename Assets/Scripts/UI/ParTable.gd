@@ -30,14 +30,12 @@ func Fill(size : int, values : PackedInt32Array, total : int, hasP2 : bool, valu
 	if hasP2:
 		rowScoresP2 = TableRow.instantiate()
 		$TableRowContainer.add_child(rowScoresP2)
-		pass
 	
 	AddCell(rowNums, "Turn")
 	AddCell(rowScores, "Player 1" if hasP2 else "Score")
 	
 	if hasP2:
 		AddCell(rowScoresP2, "Player 2")
-		pass
 	
 	var valuesSize = values.size()
 	var valuesSizeP2 = valuesP2.size()
@@ -48,20 +46,25 @@ func Fill(size : int, values : PackedInt32Array, total : int, hasP2 : bool, valu
 	
 		if hasP2:
 			AddCell(rowScoresP2, valuesP2[r] if r < valuesSizeP2 else "-")
-			pass
-		pass
 	
 	AddCell(rowNums, "Total")
 	AddCell(rowScores, total)
 	
 	if hasP2:
 		AddCell(rowScoresP2, totalP2)
-		pass
-	pass
 
 func AddCell(row, val):
 	var cell = TableCell.instantiate()
 	cell.text = str(val)
 	
 	row.add_child(cell)
-	pass
+
+
+func _on_another_game_pressed() -> void:
+	GameManager.playButtonSFX()
+	#RELOAD LEVEL
+
+
+func _on_main_menu_button_pressed() -> void:
+	GameManager.playButtonSFX()
+	GameManager.SceneManager.change_to_scene(SceneManagement.GAME_SCENE.MAIN_MENU)

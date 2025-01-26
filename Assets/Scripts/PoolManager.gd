@@ -72,6 +72,16 @@ func hit_bubble():
 		#hit_bubble_multiplayer()
 	$AudioStreamPlayer.play()
 	
+	if alive_bubbles == 0:
+		play_timer.stop()
+		scores_per_turn[player_turn].push_back(score_this_turn)
+		total_scores[player_turn] += score_this_turn
+		StopBall.emit()
+
+		GameEnded.emit()
+		scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])
+		return
+	
 #func hit_bubble_1player():
 	#if alive_bubbles <= 0:
 		#scoreBoard.Fill(num_turns, scores_per_turn[0],total_scores[0], GameManager.num_players_in_game > 1, scores_per_turn[1],total_scores[1])

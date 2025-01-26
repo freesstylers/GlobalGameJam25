@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://5i4lbo2o8jdx" path="res://Assets/Sound/SFX/Bubble/bubble2.ogg" id="5_y71oi"]
 [ext_resource type="AudioStream" uid="uid://dp8pbvdael4tn" path="res://Assets/Sound/SFX/Bubble/bubble3.ogg" id="6_riq1k"]
 [ext_resource type="AudioStream" uid="uid://cneoexcqast5i" path="res://Assets/Sound/SFX/Bubble/bubble4.ogg" id="7_xxwn5"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
+[ext_resource type="PackedScene" uid="uid://b0kvj61ueo860" path="res://Assets/Prefabs/UI/game_ui.tscn" id="8_3yoj8"]
 [ext_resource type="AudioStream" uid="uid://bt2jncprqavnd" path="res://Assets/Sound/SFX/Bubble/bubble5.ogg" id="8_l4te8"]
 [ext_resource type="AudioStream" uid="uid://c8fv2vi50sno8" path="res://Assets/Sound/SFX/Bubble/bubble6.ogg" id="9_1acr6"]
 [ext_resource type="PackedScene" uid="uid://bvjud7wbajb6d" path="res://Assets/Prefabs/Mesas/mesa_hexagonal.tscn" id="12_anehg"]
