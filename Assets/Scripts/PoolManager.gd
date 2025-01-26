@@ -127,32 +127,32 @@ func _on_play_timer_timeout() -> void:
 		
 		var tween = create_tween()
 		tween.tween_property(SkillIssue, "position:y", 272, 0.2)
-		tween.tween_property(SkillIssue, "position:y", 670, 0.2)
 		pass
 	elif score_this_turn == 2:
 		NiceShot.visible = true;
 		var tween = create_tween()
 		tween.tween_property(NiceShot, "position:y", 272, 0.2)
-		tween.tween_property(NiceShot, "position:y", 670, 0.2)
 		pass
 	elif score_this_turn > 2:
 		LetsGoooo.visible = true;
 		var tween = create_tween()
 		tween.tween_property(LetsGoooo, "position:y", 272, 0.2)
-		tween.tween_property(LetsGoooo, "position:y", 670, 0.2)
 		pass
 	
 func on_caster_said():
 	scores_per_turn[player_turn].push_back(score_this_turn)
 	
 	if score_this_turn == 0:
-		SkillIssue.visible = false;
+		var tween = create_tween()
+		tween.tween_property(SkillIssue, "position:y", 670, 0.2)
 		pass
 	elif score_this_turn == 2:
-		NiceShot.visible = false;
+		var tween = create_tween()
+		tween.tween_property(NiceShot, "position:y", 670, 0.2)
 		pass
 	elif score_this_turn > 2:
-		LetsGoooo.visible = false;
+		var tween = create_tween()
+		tween.tween_property(LetsGoooo, "position:y", 670, 0.2)
 		pass
 	
 	if alive_bubbles <= 0:

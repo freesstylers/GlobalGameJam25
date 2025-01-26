@@ -3,6 +3,13 @@ class_name MainMenuManager extends Control
 @onready var credits : Control = $credits
 @onready var tutorial : Control = $tutorial
 @onready var MainButtonContainer : Control = $MainButtonContainer
+@onready var skyboxObj : WorldEnvironment = $WorldEnvironment
+@export var skyboxes : Array
+
+func _ready() -> void:
+	var i = randi() % skyboxes.size()
+	skyboxObj.environment.sky.sky_material.panorama = skyboxes[i]
+	pass
 
 func _on_play_button_down() -> void:
 	GameManager.num_players_in_game = 1
